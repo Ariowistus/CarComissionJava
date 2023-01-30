@@ -4,7 +4,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        CarComis carComis = new CarComis(100000);
+        CarComis carComis = new CarComis(400000);
 
         List<Car> randomCars = carComis.generateRandomCars();
         //printCars(randomCars);

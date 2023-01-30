@@ -11,16 +11,6 @@ public class CarComis {
     }
 
 
-    public List<Car> carsInBudget(List<Car> cars) {
-        List<Car> carsInBudget = new ArrayList<>();
-        for (Car car : cars) {
-            if (car.getPrice() < Budget) {
-                carsInBudget.add(car);
-            }
-        }
-        return carsInBudget;
-    }
-
 
     public List<Car> generateRandomCars() {
         List<Car> randomCars = new ArrayList<>();
@@ -39,45 +29,39 @@ public class CarComis {
             //ustaw losowy kolor
             String[] colors = {"red", "blue", "green", "yellow", "black", "white", "pink", "orange", "purple", "brown"};
             String randomColor = colors[(int) (Math.random() * colors.length)];
+            //ustaw losowy segment
+            String[] segments = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
+            String randomSegment = segments[(int) (Math.random() * segments.length)];
+            //ustaw losowy model
+            String[] models = {"Audi", "BMW", "Mercedes", "Fiat", "Opel", "Ford", "Toyota", "Honda", "Hyundai", "Kia", "Mazda", "Nissan", "Peugeot", "Renault", "Skoda", "Suzuki", "Volkswagen", "Volvo", "Citroen", "Dacia"};
+            String randomModel = models[(int) (Math.random() * models.length)];
 
 
             switch (random) {
-                case 0:
-                    randomCars.add(new Car("Audi", randomColor, randomPrice, randomMileage, "A", randomBrokenEngine, randomBrokenWheels, randomBrokenLights, randomBrokenBrakes, randomBrokenTransmission));
+                case 0, 4, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 -> {
+                    randomCars.add(new Car(randomModel,
+                            randomColor, randomPrice, randomMileage,
+                            randomSegment, randomBrokenEngine, randomBrokenWheels,
+                            randomBrokenLights, randomBrokenBrakes, randomBrokenTransmission));
                     break;
-                case 1:
-                    randomCars.add(new Car("BMW", randomColor, randomPrice, randomMileage, "B", randomBrokenEngine, randomBrokenWheels, randomBrokenLights, randomBrokenBrakes, randomBrokenTransmission));
-                    break;
-                case 2:
-                    randomCars.add(new Car("Mercedes", randomColor, randomPrice, randomMileage, "C", randomBrokenEngine, randomBrokenWheels, randomBrokenLights, randomBrokenBrakes, randomBrokenTransmission));
-                    break;
-                case 3:
-                    randomCars.add(new Car("Opel", randomColor, randomPrice, randomMileage, "D", randomBrokenEngine, randomBrokenWheels, randomBrokenLights, randomBrokenBrakes, randomBrokenTransmission));
-                    break;
-                case 4:
-                    randomCars.add(new Car("Fiat", randomColor, randomPrice, randomMileage, "E", randomBrokenEngine, randomBrokenWheels, randomBrokenLights, randomBrokenBrakes, randomBrokenTransmission));
-                    break;
-                case 5:
-                    randomCars.add(new Car("Ford", "green", randomPrice, randomMileage, "F", randomBrokenEngine, randomBrokenWheels, randomBrokenLights, randomBrokenBrakes, randomBrokenTransmission));
-                    break;
-                case 6:
-                    randomCars.add(new Car("Honda", "orange", randomPrice, randomMileage, "G", randomBrokenEngine, randomBrokenWheels, randomBrokenLights, randomBrokenBrakes, randomBrokenTransmission));
-                    break;
-                case 7:
-                    randomCars.add(new Car("Hyundai", "purple", randomPrice, randomMileage, "H", randomBrokenEngine, randomBrokenWheels, randomBrokenLights, randomBrokenBrakes, randomBrokenTransmission));
-                    break;
-                case 8:
-                    randomCars.add(new Car("Kia", "brown", randomPrice, randomMileage, "I", randomBrokenEngine, randomBrokenWheels, randomBrokenLights, randomBrokenBrakes, randomBrokenTransmission));
-                    break;
-                case 9:
-                    randomCars.add(new Car("Mazda", "grey", randomPrice, randomMileage, "J", randomBrokenEngine, randomBrokenWheels, randomBrokenLights, randomBrokenBrakes, randomBrokenTransmission));
-                    break;
+                }
+
 
             }
         }
         return randomCars;
     }
 
+
+    public List<Car> carsInBudget(List<Car> cars) {
+        List<Car> carsInBudget = new ArrayList<>();
+        for (Car car : cars) {
+            if (car.getPrice() < Budget) {
+                carsInBudget.add(car);
+            }
+        }
+        return carsInBudget;
+    }
 
 
     public Car chooseRandomCar(List<Car> cars) {
