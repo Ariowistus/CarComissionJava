@@ -4,17 +4,19 @@ import java.util.List;
 public class CarComis {
 
     private Integer Budget;
+    private List<Car> purchasedCars;
 
 
     public CarComis(Integer budget) {
         Budget = budget;
+        purchasedCars = new ArrayList<>();
     }
 
 
 
-    public List<Car> generateRandomCars() {
+    public List<Car> generateRandomCars() { // metoda generująca losowe samochody
         List<Car> randomCars = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 15; i++) {
             int random = (int) (Math.random() * 20);
             //ustaw losową cene
             int randomPrice = (int) (Math.random() * 100000);
@@ -53,7 +55,7 @@ public class CarComis {
     }
 
 
-    public List<Car> carsInBudget(List<Car> cars) {
+    public List<Car> carsInBudget(List<Car> cars) {//       metoda zwracająca samochody w budżecie
         List<Car> carsInBudget = new ArrayList<>();
         for (Car car : cars) {
             if (car.getPrice() < Budget) {
@@ -63,25 +65,25 @@ public class CarComis {
         return carsInBudget;
     }
 
-    public Car chooseRandomCar(List<Car> cars) {
-        int randomIndex = (int) (Math.random() * cars.size());
-        Car car = cars.get(randomIndex);
-        cars.remove(randomIndex);
-        return car;
+    public void addPurchasedCar(Car car,List<Car> carsInBudget) {
+        purchasedCars.add(car);
+        Budget -= car.getPrice();
+        carsInBudget.remove(car);
+        carsInBudget.addAll(generateRandomCars());
     }
-
-
-
-
-
-
-
-
 
 
 
 
     public Integer getBudget() {
         return Budget;
+    }
+
+    public List<Car> getPurchasedCars() {
+        if (purchasedCars.isEmpty()) {
+            System.out.println("Nie kupiłeś jeszcze żadnego samochodu");
+            return purchasedCars;
+        }
+        return purchasedCars;
     }
 }
