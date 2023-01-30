@@ -3,23 +3,30 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        CarBase carBase = new CarBase();
-        CarCommission carCommission = new CarCommission(100000, carBase.getCars());
-        carBase.getCars();
-        printCars(carBase.getCars(), carCommission.Capital);
 
+        CarComis carComis = new CarComis(100000);
+
+        List<Car> randomCars = carComis.generateRandomCars();
+        //printCars(randomCars);
+
+
+        List<Car> carsInBudget = carComis.carsInBudget(randomCars);
+        printCars(carsInBudget);
+
+//        Car carChosen = carComis.chooseRandomCar(randomCars);
+//        System.out.println(carChosen);
 
 
 
     }
 
-
-    public static void printCars(List<Car> cars, Integer capital){
-        System.out.println("Capitał zakładowy to: "+capital);
-        System.out.println("Lista samochodów:");
-        for (Car car : cars) {
+    private static void printCars(List<Car> carsInBudget) {
+        for (Car car : carsInBudget) {
             System.out.println(car);
         }
     }
 
+
 }
+
+
