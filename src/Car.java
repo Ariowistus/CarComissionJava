@@ -2,6 +2,7 @@ import java.util.Arrays;
 
 public class Car {
 
+
     private String model;
     private String color;
     private int price;
@@ -115,5 +116,13 @@ public class Car {
 
     public void setBrokenTransmission(boolean brokenTransmission) {
         this.brokenTransmission = brokenTransmission;
+    }
+
+    public boolean isBrokenEngine() {
+        return brokenengine;
+    }
+
+    public void setBrokenEngine(boolean b) {
+        this.brokenengine = b;
     }
 }
