@@ -63,11 +63,11 @@ public class CarComis {
         return carsInBudget;
     }
 
-
     public Car chooseRandomCar(List<Car> cars) {
-        List<Car> carsInBudget = carsInBudget(cars);
-        int random = (int) (Math.random() * carsInBudget.size());
-        return carsInBudget.get(random);
+        int randomIndex = (int) (Math.random() * cars.size());
+        Car car = cars.get(randomIndex);
+        cars.remove(randomIndex);
+        return car;
     }
 
 
