@@ -15,41 +15,30 @@ public class Menu {
         while (isRunning) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Wybierz opcje: ");
-            System.out.println("1. Wyświetl wszystkie samochody");
-            System.out.println("2. Wyświetl samochody w budżecie");
-            System.out.println("3. Exit");
-            System.out.println("4. kup samochód");
-            System.out.println("5 Twój budżet");
-            System.out.println("6. Wyświetl kupione samochody");
+            System.out.println("1. Kup samochod");
+            System.out.println("2 Twój budzet");
+            System.out.println("3. Kupione samochody");
+            System.out.println("4. Wyjdz");
             switch (scanner.nextInt()) {
+
                 case 1 -> {
-                    System.out.println("Wyświetlam wszystkie samochody");
-                    printCars(randomCars);
-                    break;
-                }
-                case 2 -> {
-                    System.out.println("Wyświetlam samochody w budżecie");
-                    printCars(carsInBudget);
-                    break;
-                }
-                case 3 -> {
-                    isRunning = false;
-                    break;
-                }
-                case 4 -> {
                     System.out.println("Kup samochód");
                     System.out.println("twój budżet: " + carComis.getBudget());
 
                     purchaseCar(scanner, carComis, randomCars);
                     break;
                 }
-                case 5 -> {
+                case 2 -> {
                     System.out.println("Twój budżet to: " + carComis.getBudget());
                     break;
                 }
-                case 6 -> {
+                case 3 -> {
                     System.out.println("Kupione samochody");
                     printCars(carComis.getPurchasedCars());
+                    break;
+                }
+                case 4 -> {
+                    isRunning = false;
                     break;
                 }
 
