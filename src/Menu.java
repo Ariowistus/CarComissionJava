@@ -38,7 +38,9 @@ public class Menu {
                 }
                 case 4 -> {
                     System.out.println("Kup samochód");
-                    purchaseCar(scanner, carComis, carsInBudget);
+                    System.out.println("twój budżet: " + carComis.getBudget());
+
+                    purchaseCar(scanner, carComis, randomCars);
                     break;
                 }
                 case 5 -> {
@@ -58,18 +60,18 @@ public class Menu {
         }
     }
 
-    private void purchaseCar(Scanner scanner, CarComis carComis, List<Car> carsInBudget) {
+    private void purchaseCar(Scanner scanner, CarComis carComis, List<Car> randomCars) {
         System.out.println("Wybierz samochód do zakupu (podaj numer samochodu):");
-        printCars(carsInBudget);
+        printCars(randomCars);
         int carIndex = scanner.nextInt();
-        Car carToPurchase = carsInBudget.get(carIndex - 1);
-        carComis.addPurchasedCar(carToPurchase,carsInBudget);
-        System.out.println("Samochód zakupiony: " + carToPurchase);
+        Car carToPurchase = randomCars.get(carIndex - 1);
+        carComis.addPurchasedCar(carToPurchase, randomCars);
     }
 
-    public void printCars(List<Car> carsInBudget) {
-        for (Car car : carsInBudget) {
-            System.out.println(car);
+    public void printCars(List<Car> randomCars) {
+        for (int i = 0; i < randomCars.size(); i++) {
+            System.out.println((i + 1) + ". " + randomCars.get(i));
+
         }
     }
 }

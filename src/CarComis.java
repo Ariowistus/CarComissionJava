@@ -3,12 +3,13 @@ import java.util.List;
 
 public class CarComis {
 
-    private Integer Budget;
+    private Integer budget;
     private List<Car> purchasedCars;
 
 
+
     public CarComis(Integer budget) {
-        Budget = budget;
+        this.budget = budget;
         purchasedCars = new ArrayList<>();
     }
 
@@ -16,8 +17,8 @@ public class CarComis {
 
     public List<Car> generateRandomCars() { // metoda generująca losowe samochody
         List<Car> randomCars = new ArrayList<>();
-        for (int i = 0; i < 15; i++) {
-            int random = (int) (Math.random() * 20);
+        for (int i = 0; i < 10; i++) {
+            int random = (int) (Math.random() * 9);
             //ustaw losową cene
             int randomPrice = (int) (Math.random() * 100000);
             //ustaw losowy przebieg
@@ -40,7 +41,7 @@ public class CarComis {
 
 
             switch (random) {
-                case 0, 4, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 -> {
+                case 0, 4, 1, 2, 3, 5, 6, 7, 8, 9 -> {
                     randomCars.add(new Car(randomModel,
                             randomColor, randomPrice, randomMileage,
                             randomSegment, randomBrokenEngine, randomBrokenWheels,
@@ -55,28 +56,43 @@ public class CarComis {
     }
 
 
+    public void addPurchasedCar(Car car,List<Car> randomCars) {
+        if (budget >= car.getPrice()) {
+            budget -= car.getPrice();
+            purchasedCars.add(car);
+            randomCars.remove(car);
+
+        } else {
+            System.out.println("Nie masz wystarczająco pieniędzy");
+        }
+        //randomCars.addAll(randomCars.indexOf(randomCars.size()-1),randomCars);
+        //wstaw jeden nowy samochód do listy propontowanych samochodów
+//        List<Car> randomCars2 = new ArrayList<>();
+//        randomCars2.addAll(randomCars.indexOf(randomCars.size()-1),randomCars);
+
+
+
+
+    }
+
     public List<Car> carsInBudget(List<Car> cars) {//       metoda zwracająca samochody w budżecie
         List<Car> carsInBudget = new ArrayList<>();
         for (Car car : cars) {
-            if (car.getPrice() < Budget) {
+            if (car.getPrice() < this.budget) {
                 carsInBudget.add(car);
             }
         }
         return carsInBudget;
     }
 
-    public void addPurchasedCar(Car car,List<Car> carsInBudget) {
-        purchasedCars.add(car);
-        Budget -= car.getPrice();
-        carsInBudget.remove(car);
-        carsInBudget.addAll(generateRandomCars());
-    }
-
 
 
 
     public Integer getBudget() {
-        return Budget;
+        if (budget < 0) {
+            System.out.println("You are in debt");
+        }
+        return budget;
     }
 
     public List<Car> getPurchasedCars() {
