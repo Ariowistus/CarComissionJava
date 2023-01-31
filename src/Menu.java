@@ -3,13 +3,11 @@ import java.util.Scanner;
 
 public class Menu {
 
-    public void menu() {//
+    public void menu() {
         CarComis carComis = new CarComis(120000);
 
         List<Car> randomCars = carComis.generateRandomCars();
 
-
-        List<Car> carsInBudget = carComis.carsInBudget(randomCars);
         boolean isRunning = true;
 
         while (isRunning) {
@@ -97,12 +95,12 @@ public class Menu {
         int carIndex = scanner.nextInt();
         Car carToPurchase = randomCars.get(carIndex - 1);
         carComis.addPurchasedCar(carToPurchase, randomCars);
-    }
+    } //kup samochod
 
     public void printCars(List<Car> randomCars) {
         for (int i = 0; i < randomCars.size(); i++) {
             System.out.println((i + 1) + ". " + randomCars.get(i));
 
         }
-    }
+    }//wypisz samochody
 }

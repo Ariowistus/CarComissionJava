@@ -51,7 +51,7 @@ public class CarComis {
             }
         }
         return randomCars;
-    }
+    } // metoda generująca losowe samochody
 
 
     public void addPurchasedCar(Car car, List<Car> randomCars) {
@@ -87,17 +87,9 @@ public class CarComis {
         }
 
 
-    }
+    } // metoda dodająca kupiony samochód do listy kupionych samochodów
 
-    public List<Car> carsInBudget(List<Car> cars) {//       metoda zwracająca samochody w budżecie
-        List<Car> carsInBudget = new ArrayList<>();
-        for (Car car : cars) {
-            if (car.getPrice() < this.budget) {
-                carsInBudget.add(car);
-            }
-        }
-        return carsInBudget;
-    }
+
 
 
     public Integer getBudget() {
@@ -105,7 +97,7 @@ public class CarComis {
             System.out.println("Wziełeś małą pożyczke ale bd się opłacać");
         }
         return (int) budget;
-    }
+    } // metoda zwracająca budżet
 
     public List<Car> getPurchasedCars() {
         if (purchasedCars.isEmpty()) {
@@ -113,9 +105,9 @@ public class CarComis {
             return purchasedCars;
         }
         return purchasedCars;
-    }
+    }// metoda zwracająca listę kupionych samochodów
 
-    //stwórz metode która pokazuje co jest zepsute w zakupionym samochodzie
+
     public void showBrokenParts(Car car) {
         if (car.isBrokenEngine()) {
             System.out.println("Engine is broken");
@@ -132,48 +124,17 @@ public class CarComis {
         if (car.isBrokenTransmission()) {
             System.out.println("Transmission is broken");
         }
-    }
+    }// metoda pokazująca uszkodzone części samochodu
 
-    //stwórz metode która naprawia uszkodzenia w samochodzie i zmniejsza budżet o koszt naprawy i podcene samochodu w zalznosci od uszkodzen
-    //naprawa silnika kosztuje 30% wartości  ale zwiększa wartośc auta o 100%
-    //naprawa kół kosztuje 10% wartości  ale zwiększa wartośc auta o 50%
-    //naprawa świateł kosztuje 5% wartości  ale zwiększa wartośc auta o 20%
-    //naprawa hamulców kosztuje 5% wartości  ale zwiększa wartośc auta o 20%
-    //naprawa skrzyni biegów kosztuje 10% wartości  ale zwiększa wartośc auta o 50%
-    public void repairCar(Car car) {
-        if (car.isBrokenEngine()) {
-            budget -= car.getPrice() * 0.3;
-            car.setPrice(car.getPrice() * 2);
-            car.setBrokenEngine(false);
-        }
-        if (car.isBrokenWheels()) {
-            budget -= car.getPrice() * 0.1;
-            car.setPrice((int) (car.getPrice() * 1.5));
-            car.setBrokenWheels(false);
-        }
-        if (car.isBrokenLights()) {
-            budget -= car.getPrice() * 0.05;
-            car.setPrice((int) (car.getPrice() * 1.2));
-            car.setBrokenLights(false);
-        }
-        if (car.isBrokenBrakes()) {
-            budget -= car.getPrice() * 0.05;
-            car.setPrice((int) (car.getPrice() * 1.2));
-            car.setBrokenBrakes(false);
-        }
-        if (car.isBrokenTransmission()) {
-            budget -= car.getPrice() * 0.1;
-            car.setPrice((int) (car.getPrice() * 1.5));
-            car.setBrokenTransmission(false);
-        }
-    }
+
+
 
 
     public void sellCar(Car car) {
         budget += car.getPrice();
         purchasedCars.remove(car);
-    }
-    //  Mechanik Adrian który jest  najtańszy, ale ma 20% szans, że nie uda mu się naprawić i 2% szans, że zepsuje coś innego podczas naprawy
+    }// metoda sprzedająca samochód
+
     public void repairCarByMechanicAdrian(Car car) {
         if (car.isBrokenEngine()) {
             if (Math.random() < 0.2) {
@@ -231,8 +192,8 @@ public class CarComis {
                 }
             }
         }
-    }
-    // Mechanik Janusz który jest najdroższy ale ma 100 % szans, że uda mu się naprawić i 5% szans, że zepsuje coś innego podczas naprawy
+    }// metoda naprawiająca samochód mechanicznym Adrianem
+
     public void repairCarByMechanicJanusz(Car car) {
         if (car.isBrokenEngine()) {
             if (Math.random() < 0.05) {
@@ -274,8 +235,8 @@ public class CarComis {
                 car.setBrokenBrakes(false);
             }
         }
-    }
-    //Marian - bierze zdecydowanie mniej niż Janusz, ale masz 10% szans, że nie uda mu się naprawić samochodu i konieczna będzie interwencja Janusza
+    }// metoda naprawiająca samochód mechanicznym Januszem
+
     public void repairCarByMechanicMarian(Car car) {
         if (car.isBrokenEngine()) {
             if (Math.random() < 0.1) {
@@ -317,7 +278,7 @@ public class CarComis {
                 car.setBrokenBrakes(false);
             }
         }
-    }
+    }// metoda naprawiająca samochód mechanicznym Marianem
 
 
 
