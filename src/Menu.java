@@ -15,7 +15,7 @@ public class Menu {
             System.out.println("Wybierz opcje: ");
             System.out.println("1. Kup samochod");
             System.out.println("2 Twój budzet");
-            System.out.println("3. Kupione samochody");
+            System.out.println("3. Zarządzaj kupionymi samochodami");
             System.out.println("4. Wyjdz");
             switch (scanner.nextInt()) {
 
