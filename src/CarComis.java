@@ -143,6 +143,8 @@ public class CarComis {
     }// metoda sprzedająca samochód
 
 
+
+
     public void repairCarByMechanicMarian(Car car, String partToRepair) {
         if (partToRepair.equals("Engine")) {
             if (car.isBrokenEngine()) {
@@ -1275,6 +1277,7 @@ public class CarComis {
         }
         return repairCost;
     }
+
 
 
 

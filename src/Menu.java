@@ -54,20 +54,48 @@ public class Menu {
                     String partIndex = scanner.next();
                     switch (partIndex) {
                         case "Engine" -> {
-                            //chce sprawidzić czy ta część jest uszkodzona
-                            if (carComis.getPurchasedCars().get(carIndex - 1).isBrokenengine()) {
-                                carComis.getPurchasedCars().get(carIndex - 1).setBrokenengine(false);
-                                System.out.println("Naprawiono silnik");
+                            //sprawdz if czy jest uszkodzony
+                            if (!carComis.getPurchasedCars().get(carIndex - 1).isBrokenengine()) {
+                                System.out.println("Ten silnik nie jest uszkodzony");
+                                continue;
                             } else {
-                                System.out.println("Silnik nie jest uszkodzony");
+                                System.out.println("Chcesz naprawić tą część (t/n)");
                             }
 
-                            System.out.println("Chcesz naprawić tą część (t/n)");
+
                         }
-                        case "Wheels" -> System.out.println("Chcesz naprawić tą część (t/n)");
-                        case "Lights" -> System.out.println("Chcesz naprawić tą część (t/n)");
-                        case "Brakes" -> System.out.println("Chcesz naprawić tą część (t/n)");
-                        case "Transmission" -> System.out.println("Chcesz naprawić tą część (t/n)");
+                        case "Wheels" -> {
+                            if (!carComis.getPurchasedCars().get(carIndex - 1).isBrokenWheels()) {
+                                System.out.println("Te koła nie są uszkodzone");
+                                continue;
+                            } else {
+                                System.out.println("Chcesz naprawić tą część (t/n)");
+                            }
+                        }
+                        case "Lights" -> {
+                            if (!carComis.getPurchasedCars().get(carIndex - 1).isBrokenLights()) {
+                                System.out.println("Te światła nie są uszkodzone");
+                                continue;
+                            } else {
+                                System.out.println("Chcesz naprawić tą część (t/n)");
+                            }
+                        }
+                        case "Brakes" -> {
+                            if (!carComis.getPurchasedCars().get(carIndex - 1).isBrokenBrakes()) {
+                                System.out.println("Te hamulce nie są uszkodzone");
+                                continue;
+                            } else {
+                                System.out.println("Chcesz naprawić tą część (t/n)");
+                            }
+                        }
+                        case "Transmission" -> {
+                            if (!carComis.getPurchasedCars().get(carIndex - 1).isBrokenTransmission()) {
+                                System.out.println("Skrzynia biegów nie jest uszkodzona");
+                                continue;
+                            } else {
+                                System.out.println("Chcesz naprawić tą część (t/n)");
+                            }
+                        }
                         default -> {
                             System.out.println("Nie ma takiej opcji,sprawdzi czy dobrze napisales");
                             continue;
@@ -114,15 +142,22 @@ public class Menu {
                     System.out.println("Kupione samochody");
                     printCars(carComis.getPurchasedCars());
                     System.out.println("który samochód chcesz sprzedać?");
-                    int carIndex1 = scanner.nextInt();
-                    if (carIndex1 <= 0 || carIndex1 > carComis.getPurchasedCars().size()) {
-                        System.out.println("Nie ma takiego samochodu");
+
+                    if(scanner.hasNextInt()) {
+                        int carIndex1 = scanner.nextInt();
+                        if (carIndex1 <= 0 || carIndex1 > carComis.getPurchasedCars().size()) {
+                            System.out.println("Nie ma takiego samochodu");
+                            continue;
+                        }
+                        carComis.sellCar(carComis.getPurchasedCars().get(carIndex1 - 1));
+                        System.out.println("Samochód został sprzedany");
+                        System.out.println("Twój budżet to: " + carComis.getBudget());
+                        break;
+                    } else {
+                        System.out.println("Wprowadzono nieprawidłowe dane, proszę wprowadzić liczbę");
+                        scanner.next();
                         continue;
                     }
-                    carComis.sellCar(carComis.getPurchasedCars().get(carIndex1 - 1));
-                    System.out.println("Samochód został sprzedany");
-                    System.out.println("Twój budżet to: " + carComis.getBudget());
-                    break;
 
 
                 }
