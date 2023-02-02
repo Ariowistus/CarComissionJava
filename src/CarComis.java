@@ -88,15 +88,13 @@ public class CarComis {
                     randomSegment, randomBrokenEngine, randomBrokenWheels,
                     randomBrokenLights, randomBrokenBrakes, randomBrokenTransmission));
             System.out.println("Cena samochodu: " + car.getPrice());
-            System.out.println("Podatek "+(car.getPrice()*tax));
-            System.out.println("Myjnia "+wash);
+            System.out.println("Podatek " + (car.getPrice() * tax));
+            System.out.println("Myjnia " + wash);
             System.out.println("Pozostało Ci " + budget + " zł");
 
         } else {
             System.out.println("Nie masz wystarczająco pieniędzy");
         }
-
-
 
 
     } // metoda dodająca kupiony samochód do listy kupionych samochodów
@@ -139,749 +137,1145 @@ public class CarComis {
         double tax = 0.02;
         budget = budget + (car.getPrice()) - ((car.getPrice() * tax)) - (wash);
         this.purchasedCars.remove(car);
-        System.out.println("Podatek wyniósł: "+(car.getPrice()*tax));
-        System.out.println("Myjnia kosztowała: "+wash);
+        System.out.println("Podatek wyniósł: " + (car.getPrice() * tax));
+        System.out.println("Myjnia kosztowała: " + wash);
         System.out.println("Pozostało Ci: " + budget + " zł");
     }// metoda sprzedająca samochód
 
 
-
-
-    public void repairCarByMechanicAdrian(Car car) {
-        if (car.isBrokenEngine()) {
-            if (Math.random() < 0.25) {
-                System.out.println("Mechanic Adrian nie udało mu się naprawić silnika");
-                car.setBrokenEngine(true);
-            } else {
+    public void repairCarByMechanicMarian(Car car, String partToRepair) {
+        if (partToRepair.equals("Engine")) {
+            if (car.isBrokenEngine()) {
                 if (Math.random() < 0.1) {
+                    System.out.println("Marianowi nie udało mu się naprawić silnika");
                     car.setBrokenEngine(true);
-                    System.out.println("Mechanic Adrian zepsuł silnik");
+                    System.out.println("Interweniował mechaniczny Janusz xD");
+                    repairCarByMechanicJanusz(car, partToRepair);
                 } else {
-                    switch (car.getModel()) {
-                        case "Mercedes","Audi","BMW" -> {
-                            budget -= car.getPrice() * (0.1 + 0.2);
-                            car.setPrice(car.getPrice() * 2);
-                            car.setBrokenEngine(false);
-                        }
-                        case "Volvo","Ford","Volkswagen" -> {
-                            budget -= car.getPrice() * (0.1 + 0.1);
-                            car.setPrice(car.getPrice() * 2);
-                            car.setBrokenEngine(false);
-                        }
-                        case  "Toyota", "Honda", "Kia","Mazda","Suzuki" -> {
-                            budget -= car.getPrice() * (0.1 + 0.08);
-                            car.setPrice(car.getPrice() * 2);
-                            car.setBrokenEngine(false);
-                        }
-                        case "Skoda","Hyundai","Nissan" -> {
-                            budget -= car.getPrice() * (0.1 + 0.07);
-                            car.setPrice(car.getPrice() * 2);
-                            car.setBrokenEngine(false);
-                        }
-                        case "Fiat", "Opel",  "Dacia" -> {
-                            budget -= car.getPrice() * (0.1 + 0.06);
-                            car.setPrice(car.getPrice() * 2);
-                            car.setBrokenEngine(false);
-                        }
-                        case "Peugeot", "Renault", "Citroen" -> {
-                            budget -= car.getPrice() * (0.1 + 0.05);
-                            car.setPrice(car.getPrice() * 2);
-                            car.setBrokenEngine(false);
+                    if (Math.random() < 0.01) {
+                        car.setBrokenEngine(true);
+                        System.out.println("Mechanic Marian zepsuł silnik");
+                    } else {
+                        switch (car.getModel()) {
+                            case "Mercedes", "Audi", "BMW" -> {
+                                budget -= car.getPrice() * (0.1 + 0.11);
+                                car.setPrice((int) (car.getPrice() * 2.5));
+                                car.setBrokenEngine(false);
+                            }
+                            case "Volvo", "Ford", "Volkswagen" -> {
+                                budget -= car.getPrice() * (0.1 + 0.09);
+                                car.setPrice((int) (car.getPrice() * 2.5));
+                                car.setBrokenEngine(false);
+                            }
+                            case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
+                                budget -= car.getPrice() * (0.1 + 0.08);
+                                car.setPrice((int) (car.getPrice() * 2.5));
+                                car.setBrokenEngine(false);
+                            }
+                            case "Skoda", "Hyundai", "Nissan" -> {
+                                budget -= car.getPrice() * (0.1 + 0.07);
+                                car.setPrice((int) (car.getPrice() * 2.5));
+                                car.setBrokenEngine(false);
+                            }
+                            case "Fiat", "Opel", "Dacia" -> {
+                                budget -= car.getPrice() * (0.1 + 0.06);
+                                car.setPrice((int) (car.getPrice() * 2.5));
+                                car.setBrokenEngine(false);
+                            }
+                            case "Peugeot", "Renault", "Citroen" -> {
+                                budget -= car.getPrice() * (0.1 + 0.05);
+                                car.setPrice((int) (car.getPrice() * 2.5));
+                                car.setBrokenEngine(false);
+                            }
                         }
                     }
                 }
             }
+
         }
-        if (car.isBrokenBrakes()) {
-            if (Math.random() < 0.2) {
-                System.out.println("Mechanic Adrian nie udało mu się naprawić hamulców");
-                car.setBrokenBrakes(true);
-            } else {
+
+        if (partToRepair.equals("Brakes")) {
+
+            if (car.isBrokenBrakes()) {
                 if (Math.random() < 0.1) {
+                    System.out.println("Marianowi nie udało mu się naprawić hamulców");
+                    System.out.println("Interweniował mechaniczny Janusz xD");
                     car.setBrokenBrakes(true);
-                    System.out.println("Mechanic Adrian zepsuł hamulce");
+                    repairCarByMechanicJanusz(car, partToRepair);
                 } else {
-                    switch (car.getModel()) {
-                        case "Mercedes","Audi","BMW" -> {
-                            budget -= car.getPrice() * (0.1 + 0.2);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenBrakes(false);
-                        }
-                        case "Volvo","Ford","Volkswagen" -> {
-                            budget -= car.getPrice() * (0.1 + 0.1);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenBrakes(false);
-                        }
-                        case  "Toyota", "Honda", "Kia","Mazda","Suzuki" -> {
-                            budget -= car.getPrice() * (0.1 + 0.08);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenBrakes(false);
-                        }
-                        case "Skoda","Hyundai","Nissan" -> {
-                            budget -= car.getPrice() * (0.1 + 0.07);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenBrakes(false);
-                        }
-                        case "Fiat", "Opel",  "Dacia" -> {
-                            budget -= car.getPrice() * (0.1 + 0.06);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenBrakes(false);
-                        }
-                        case "Peugeot", "Renault", "Citroen" -> {
-                            budget -= car.getPrice() * (0.1 + 0.05);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenBrakes(false);
+                    if (Math.random() < 0.01) {
+                        car.setBrokenBrakes(true);
+                        System.out.println("Mechanic Marian zepsuł hamulce");
+                    } else {
+                        switch (car.getModel()) {
+                            case "Mercedes", "Audi", "BMW" -> {
+                                budget -= car.getPrice() * (0.03 + 0.07);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenBrakes(false);
+                            }
+                            case "Volvo", "Ford", "Volkswagen" -> {
+                                budget -= car.getPrice() * (0.03 + 0.06);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenBrakes(false);
+                            }
+                            case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
+                                budget -= car.getPrice() * (0.03 + 0.05);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenBrakes(false);
+                            }
+                            case "Skoda", "Hyundai", "Nissan" -> {
+                                budget -= car.getPrice() * (0.03 + 0.04);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenBrakes(false);
+                            }
+                            case "Fiat", "Opel", "Dacia" -> {
+                                budget -= car.getPrice() * (0.03 + 0.03);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenBrakes(false);
+                            }
+                            case "Peugeot", "Renault", "Citroen" -> {
+                                budget -= car.getPrice() * (0.03 + 0.02);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenBrakes(false);
+                            }
                         }
                     }
                 }
             }
+
+
         }
-        if (car.isBrokenTransmission()) {
-            if (Math.random() < 0.2) {
-                System.out.println("Mechanic Adrian nie udało mu się naprawić skrzyni biegów");
-                car.setBrokenTransmission(true);
-            } else {
+
+        if (partToRepair.equals("Transmission")) {
+            if (car.isBrokenTransmission()) {
                 if (Math.random() < 0.1) {
+                    System.out.println("Marianowi nie udało mu się naprawić skrzyni biegów");
+                    System.out.println("Interweniował mechaniczny Janusz xD");
                     car.setBrokenTransmission(true);
-                    System.out.println("Mechanic Adrian zepsuł skrzynię biegów");
+                    repairCarByMechanicJanusz(car, partToRepair);
                 } else {
-                    switch (car.getModel()) {
-                        case "Mercedes","Audi","BMW" -> {
-                            budget -= car.getPrice() * (0.1 + 0.2);
-                            car.setPrice((int) (car.getPrice() * 1.6));
-                            car.setBrokenTransmission(false);
-                        }
-                        case "Volvo","Ford","Volkswagen" -> {
-                            budget -= car.getPrice() * (0.1 + 0.1);
-                            car.setPrice((int) (car.getPrice() * 1.6));
-                            car.setBrokenTransmission(false);
-                        }
-                        case  "Toyota", "Honda", "Kia","Mazda","Suzuki" -> {
-                            budget -= car.getPrice() * (0.1 + 0.08);
-                            car.setPrice((int) (car.getPrice() * 1.6));
-                            car.setBrokenTransmission(false);
-                        }
-                        case "Skoda","Hyundai","Nissan" -> {
-                            budget -= car.getPrice() * (0.1 + 0.07);
-                            car.setPrice((int) (car.getPrice() * 1.6));
-                            car.setBrokenTransmission(false);
-                        }
-                        case "Fiat", "Opel",  "Dacia" -> {
-                            budget -= car.getPrice() * (0.1 + 0.06);
-                            car.setPrice((int) (car.getPrice() * 1.6));
-                            car.setBrokenTransmission(false);
-                        }
-                        case "Peugeot", "Renault", "Citroen" -> {
-                            budget -= car.getPrice() * (0.1 + 0.05);
-                            car.setPrice((int) (car.getPrice() * 1.6));
-                            car.setBrokenTransmission(false);
+                    if (Math.random() < 0.01) {
+                        car.setBrokenTransmission(true);
+                        System.out.println("Marianowi zepsuł skrzynię biegów");
+                    } else {
+                        switch (car.getModel()) {
+                            case "Mercedes", "Audi", "BMW" -> {
+                                budget -= car.getPrice() * (0.1 + 0.1);
+                                car.setPrice((int) (car.getPrice() * 1.9));
+                                car.setBrokenTransmission(false);
+                            }
+                            case "Volvo", "Ford", "Volkswagen" -> {
+                                budget -= car.getPrice() * (0.1 + 0.09);
+                                car.setPrice((int) (car.getPrice() * 1.9));
+                                car.setBrokenTransmission(false);
+                            }
+                            case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
+                                budget -= car.getPrice() * (0.1 + 0.08);
+                                car.setPrice((int) (car.getPrice() * 1.9));
+                                car.setBrokenTransmission(false);
+                            }
+                            case "Skoda", "Hyundai", "Nissan" -> {
+                                budget -= car.getPrice() * (0.1 + 0.07);
+                                car.setPrice((int) (car.getPrice() * 1.9));
+                                car.setBrokenTransmission(false);
+                            }
+                            case "Fiat", "Opel", "Dacia" -> {
+                                budget -= car.getPrice() * (0.1 + 0.06);
+                                car.setPrice((int) (car.getPrice() * 1.9));
+                                car.setBrokenTransmission(false);
+                            }
+                            case "Peugeot", "Renault", "Citroen" -> {
+                                budget -= car.getPrice() * (0.1 + 0.05);
+                                car.setPrice((int) (car.getPrice() * 1.9));
+                                car.setBrokenTransmission(false);
+                            }
                         }
                     }
                 }
+
             }
 
         }
-        if (car.isBrokenLights()) {
-            if (Math.random() < 0.2) {
-                System.out.println("Mechanic Adrian nie udało mu się naprawić świateł");
-                car.setBrokenLights(true);
-            } else {
+
+        if (partToRepair.equals("Lights")) {
+            if (car.isBrokenLights()) {
                 if (Math.random() < 0.1) {
+                    System.out.println("Marianowi nie udało mu się naprawić świateł");
+                    System.out.println("Interweniował mechaniczny Janusz xD");
                     car.setBrokenLights(true);
-                    System.out.println("Mechanic Adrian zepsuł światła");
+                    repairCarByMechanicJanusz(car, partToRepair);
                 } else {
-                    switch (car.getModel()) {
-                        case "Mercedes","Audi","BMW" -> {
-                            budget -= car.getPrice() * (0.1 + 0.2);
-                            car.setPrice((int) (car.getPrice() * 1.1));
-                            car.setBrokenLights(false);
-                        }
-                        case "Volvo","Ford","Volkswagen" -> {
-                            budget -= car.getPrice() * (0.1 + 0.1);
-                            car.setPrice((int) (car.getPrice() * 1.1));
-                            car.setBrokenLights(false);
-                        }
-                        case  "Toyota", "Honda", "Kia","Mazda","Suzuki" -> {
-                            budget -= car.getPrice() * (0.1 + 0.08);
-                            car.setPrice((int) (car.getPrice() * 1.1));
-                            car.setBrokenLights(false);
-                        }
-                        case "Skoda","Hyundai","Nissan" -> {
-                            budget -= car.getPrice() * (0.1 + 0.07);
-                            car.setPrice((int) (car.getPrice() * 1.1));
-                            car.setBrokenLights(false);
-                        }
-                        case "Fiat", "Opel",  "Dacia" -> {
-                            budget -= car.getPrice() * (0.1 + 0.06);
-                            car.setPrice((int) (car.getPrice() * 1.1));
-                            car.setBrokenLights(false);
-                        }
-                        case "Peugeot", "Renault", "Citroen" -> {
-                            budget -= car.getPrice() * (0.1 + 0.05);
-                            car.setPrice((int) (car.getPrice() * 1.1));
-                            car.setBrokenLights(false);
+                    if (Math.random() < 0.01) {
+                        car.setBrokenLights(true);
+                        System.out.println("Mechanic Marian zepsuł światła");
+                    } else {
+                        switch (car.getModel()) {
+                            case "Mercedes", "Audi", "BMW" -> {
+                                budget -= car.getPrice() * (0.05 + 0.1);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenLights(false);
+                            }
+                            case "Volvo", "Ford", "Volkswagen" -> {
+                                budget -= car.getPrice() * (0.05 + 0.09);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenLights(false);
+                            }
+                            case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
+                                budget -= car.getPrice() * (0.05 + 0.08);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenLights(false);
+                            }
+                            case "Skoda", "Hyundai", "Nissan" -> {
+                                budget -= car.getPrice() * (0.05 + 0.07);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenLights(false);
+                            }
+                            case "Fiat", "Opel", "Dacia" -> {
+                                budget -= car.getPrice() * (0.05 + 0.06);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenLights(false);
+                            }
+                            case "Peugeot", "Renault", "Citroen" -> {
+                                budget -= car.getPrice() * (0.05 + 0.05);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenLights(false);
+                            }
                         }
                     }
                 }
             }
+
+
         }
-        if (car.isBrokenWheels()) {
-            if (Math.random() < 0.2) {
-                System.out.println("Mechanic Adrian nie udało mu się naprawić opon");
-                car.setBrokenWheels(true);
-            } else {
+
+        if (partToRepair.equals("Wheels")) {
+            if (car.isBrokenWheels()) {
                 if (Math.random() < 0.1) {
+                    System.out.println(" Marianowi nie udało mu się naprawić opon");
+                    System.out.println("Interweniował mechaniczny Janusz xD");
                     car.setBrokenWheels(true);
-                    System.out.println("Mechanic Adrian zepsuł opony");
+                    repairCarByMechanicJanusz(car, partToRepair);
                 } else {
-                    switch (car.getModel()) {
-                        case "Mercedes","Audi","BMW" -> {
-                            budget -= car.getPrice() * (0.1 + 0.2);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenWheels(false);
-                        }
-                        case "Volvo","Ford","Volkswagen" -> {
-                            budget -= car.getPrice() * (0.1 + 0.1);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenWheels(false);
-                        }
-                        case  "Toyota", "Honda", "Kia","Mazda","Suzuki" -> {
-                            budget -= car.getPrice() * (0.1 + 0.08);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenWheels(false);
-                        }
-                        case "Skoda","Hyundai","Nissan" -> {
-                            budget -= car.getPrice() * (0.1 + 0.07);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenWheels(false);
-                        }
-                        case "Fiat", "Opel",  "Dacia" -> {
-                            budget -= car.getPrice() * (0.1 + 0.06);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenWheels(false);
-                        }
-                        case "Peugeot", "Renault", "Citroen" -> {
-                            budget -= car.getPrice() * (0.1 + 0.05);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenWheels(false);
-                        }
-                    }
-                }
-            }
-        }
-
-
-    }
-    public void repairCarByMechanicJanusz(Car car) {
-        if (car.isBrokenEngine()) {
-            if (Math.random() < 0.001) {
-                System.out.println("Mechanic Janusz nie udało mu się naprawić silnika");
-                car.setBrokenEngine(true);
-            } else {
-                if (Math.random() < 0.0001) {
-                    car.setBrokenEngine(true);
-                    System.out.println("Mechanic Janusz zepsuł silnik");
-                } else {
-                    switch (car.getModel()) {
-                        case "Mercedes","Audi","BMW" -> {
-                            budget -= car.getPrice() * (0.3 + 0.2);
-                            car.setPrice(car.getPrice() * 2);
-                            car.setBrokenEngine(false);
-                        }
-                        case "Volvo","Ford","Volkswagen" -> {
-                            budget -= car.getPrice() * (0.3 + 0.1);
-                            car.setPrice(car.getPrice() * 2);
-                            car.setBrokenEngine(false);
-                        }
-                        case  "Toyota", "Honda", "Kia","Mazda","Suzuki" -> {
-                            budget -= car.getPrice() * (0.3 + 0.08);
-                            car.setPrice(car.getPrice() * 2);
-                            car.setBrokenEngine(false);
-                        }
-                        case "Skoda","Hyundai","Nissan" -> {
-                            budget -= car.getPrice() * (0.3 + 0.07);
-                            car.setPrice(car.getPrice() * 2);
-                            car.setBrokenEngine(false);
-                        }
-                        case "Fiat", "Opel",  "Dacia" -> {
-                            budget -= car.getPrice() * (0.3 + 0.06);
-                            car.setPrice(car.getPrice() * 2);
-                            car.setBrokenEngine(false);
-                        }
-                        case "Peugeot", "Renault", "Citroen" -> {
-                            budget -= car.getPrice() * (0.3 + 0.05);
-                            car.setPrice(car.getPrice() * 2);
-                            car.setBrokenEngine(false);
-                        }
-                    }
-                }
-            }
-        }
-        if (car.isBrokenBrakes()) {
-            if (Math.random() < 0.001) {
-                System.out.println("Mechanic Janusz nie udało mu się naprawić hamulców");
-                car.setBrokenBrakes(true);
-            } else {
-                if (Math.random() < 0.0001) {
-                    car.setBrokenBrakes(true);
-                    System.out.println("Mechanic Janusz zepsuł hamulce");
-                } else {
-                    switch (car.getModel()) {
-                        case "Mercedes","Audi","BMW" -> {
-                            budget -= car.getPrice() * (0.3 + 0.2);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenBrakes(false);
-                        }
-                        case "Volvo","Ford","Volkswagen" -> {
-                            budget -= car.getPrice() * (0.3 + 0.1);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenBrakes(false);
-                        }
-                        case  "Toyota", "Honda", "Kia","Mazda","Suzuki" -> {
-                            budget -= car.getPrice() * (0.3 + 0.08);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenBrakes(false);
-                        }
-                        case "Skoda","Hyundai","Nissan" -> {
-                            budget -= car.getPrice() * (0.3 + 0.07);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenBrakes(false);
-                        }
-                        case "Fiat", "Opel",  "Dacia" -> {
-                            budget -= car.getPrice() * (0.3 + 0.06);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenBrakes(false);
-                        }
-                        case "Peugeot", "Renault", "Citroen" -> {
-                            budget -= car.getPrice() * (0.3 + 0.05);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenBrakes(false);
-                        }
-                    }
-                }
-            }
-        }
-        if (car.isBrokenTransmission()) {
-            if (Math.random() < 0.001) {
-                System.out.println("Mechanic Janusz nie udało mu się naprawić skrzyni biegów");
-                car.setBrokenTransmission(true);
-            } else {
-                if (Math.random() < 0.0001) {
-                    car.setBrokenTransmission(true);
-                    System.out.println("Mechanic Janusz zepsuł skrzynię biegów");
-                } else {
-                    switch (car.getModel()) {
-                        case "Mercedes","Audi","BMW" -> {
-                            budget -= car.getPrice() * (0.3 + 0.2);
-                            car.setPrice((int) (car.getPrice() * 1.6));
-                            car.setBrokenTransmission(false);
-                        }
-                        case "Volvo","Ford","Volkswagen" -> {
-                            budget -= car.getPrice() * (0.3 + 0.1);
-                            car.setPrice((int) (car.getPrice() * 1.6));
-                            car.setBrokenTransmission(false);
-                        }
-                        case  "Toyota", "Honda", "Kia","Mazda","Suzuki" -> {
-                            budget -= car.getPrice() * (0.3 + 0.08);
-                            car.setPrice((int) (car.getPrice() * 1.6));
-                            car.setBrokenTransmission(false);
-                        }
-                        case "Skoda","Hyundai","Nissan" -> {
-                            budget -= car.getPrice() * (0.3 + 0.07);
-                            car.setPrice((int) (car.getPrice() * 1.6));
-                            car.setBrokenTransmission(false);
-                        }
-                        case "Fiat", "Opel",  "Dacia" -> {
-                            budget -= car.getPrice() * (0.3 + 0.06);
-                            car.setPrice((int) (car.getPrice() * 1.6));
-                            car.setBrokenTransmission(false);
-                        }
-                        case "Peugeot", "Renault", "Citroen" -> {
-                            budget -= car.getPrice() * (0.3 + 0.05);
-                            car.setPrice((int) (car.getPrice() * 1.6));
-                            car.setBrokenTransmission(false);
+                    if (Math.random() < 0.01) {
+                        car.setBrokenWheels(true);
+                        System.out.println("Mechanic Marian zepsuł opony");
+                    } else {
+                        switch (car.getModel()) {
+                            case "Mercedes", "Audi", "BMW" -> {
+                                budget -= car.getPrice() * (0.03 + 0.1);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenWheels(false);
+                            }
+                            case "Volvo", "Ford", "Volkswagen" -> {
+                                budget -= car.getPrice() * (0.03 + 0.09);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenWheels(false);
+                            }
+                            case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
+                                budget -= car.getPrice() * (0.03 + 0.08);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenWheels(false);
+                            }
+                            case "Skoda", "Hyundai", "Nissan" -> {
+                                budget -= car.getPrice() * (0.03 + 0.07);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenWheels(false);
+                            }
+                            case "Fiat", "Opel", "Dacia" -> {
+                                budget -= car.getPrice() * (0.03 + 0.06);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenWheels(false);
+                            }
+                            case "Peugeot", "Renault", "Citroen" -> {
+                                budget -= car.getPrice() * (0.03 + 0.05);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenWheels(false);
+                            }
                         }
                     }
                 }
             }
 
-        }
-        if (car.isBrokenLights()) {
-            if (Math.random() < 0.001) {
-                System.out.println("Mechanic Janusz nie udało mu się naprawić świateł");
-                car.setBrokenLights(true);
-            } else {
-                if (Math.random() < 0.0001) {
-                    car.setBrokenLights(true);
-                    System.out.println("Mechanic Janusz zepsuł światła");
-                } else {
-                    switch (car.getModel()) {
-                        case "Mercedes","Audi","BMW" -> {
-                            budget -= car.getPrice() * (0.3 + 0.2);
-                            car.setPrice((int) (car.getPrice() * 1.1));
-                            car.setBrokenLights(false);
-                        }
-                        case "Volvo","Ford","Volkswagen" -> {
-                            budget -= car.getPrice() * (0.3 + 0.1);
-                            car.setPrice((int) (car.getPrice() * 1.1));
-                            car.setBrokenLights(false);
-                        }
-                        case  "Toyota", "Honda", "Kia","Mazda","Suzuki" -> {
-                            budget -= car.getPrice() * (0.3 + 0.08);
-                            car.setPrice((int) (car.getPrice() * 1.1));
-                            car.setBrokenLights(false);
-                        }
-                        case "Skoda","Hyundai","Nissan" -> {
-                            budget -= car.getPrice() * (0.3 + 0.07);
-                            car.setPrice((int) (car.getPrice() * 1.1));
-                            car.setBrokenLights(false);
-                        }
-                        case "Fiat", "Opel",  "Dacia" -> {
-                            budget -= car.getPrice() * (0.3 + 0.06);
-                            car.setPrice((int) (car.getPrice() * 1.1));
-                            car.setBrokenLights(false);
-                        }
-                        case "Peugeot", "Renault", "Citroen" -> {
-                            budget -= car.getPrice() * (0.3 + 0.05);
-                            car.setPrice((int) (car.getPrice() * 1.1));
-                            car.setBrokenLights(false);
-                        }
-                    }
-                }
-            }
-        }
-        if (car.isBrokenWheels()) {
-            if (Math.random() < 0.001) {
-                System.out.println("Mechanic Janusz nie udało mu się naprawić opon");
-                car.setBrokenWheels(true);
-            } else {
-                if (Math.random() < 0.0001) {
-                    car.setBrokenWheels(true);
-                    System.out.println("Mechanic Janusz zepsuł opony");
-                } else {
-                    switch (car.getModel()) {
-                        case "Mercedes","Audi","BMW" -> {
-                            budget -= car.getPrice() * (0.3 + 0.2);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenWheels(false);
-                        }
-                        case "Volvo","Ford","Volkswagen" -> {
-                            budget -= car.getPrice() * (0.3 + 0.1);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenWheels(false);
-                        }
-                        case  "Toyota", "Honda", "Kia","Mazda","Suzuki" -> {
-                            budget -= car.getPrice() * (0.3 + 0.08);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenWheels(false);
-                        }
-                        case "Skoda","Hyundai","Nissan" -> {
-                            budget -= car.getPrice() * (0.3 + 0.07);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenWheels(false);
-                        }
-                        case "Fiat", "Opel",  "Dacia" -> {
-                            budget -= car.getPrice() * (0.3 + 0.06);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenWheels(false);
-                        }
-                        case "Peugeot", "Renault", "Citroen" -> {
-                            budget -= car.getPrice() * (0.3 + 0.05);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenWheels(false);
-                        }
-                    }
-                }
-            }
-        }
 
-
-    }
-    public void repairCarByMechanicMarian(Car car) {
-        if (car.isBrokenEngine()) {
-            if (Math.random() < 0.1) {
-                System.out.println("Marianowi nie udało mu się naprawić silnika");
-                car.setBrokenEngine(true);
-                System.out.println("Interweniował mechaniczny Janusz xD");
-                repairCarByMechanicJanusz(car);
-            } else {
-                if (Math.random() < 0.01) {
-                    car.setBrokenEngine(true);
-                    System.out.println("Mechanic Marian zepsuł silnik");
-                } else {
-                    switch (car.getModel()) {
-                        case "Mercedes","Audi","BMW" -> {
-                            budget -= car.getPrice() * (0.15 + 0.2);
-                            car.setPrice(car.getPrice() * 2);
-                            car.setBrokenEngine(false);
-                        }
-                        case "Volvo","Ford","Volkswagen" -> {
-                            budget -= car.getPrice() * (0.15 + 0.1);
-                            car.setPrice(car.getPrice() * 2);
-                            car.setBrokenEngine(false);
-                        }
-                        case  "Toyota", "Honda", "Kia","Mazda","Suzuki" -> {
-                            budget -= car.getPrice() * (0.15 + 0.08);
-                            car.setPrice(car.getPrice() * 2);
-                            car.setBrokenEngine(false);
-                        }
-                        case "Skoda","Hyundai","Nissan" -> {
-                            budget -= car.getPrice() * (0.15 + 0.07);
-                            car.setPrice(car.getPrice() * 2);
-                            car.setBrokenEngine(false);
-                        }
-                        case "Fiat", "Opel",  "Dacia" -> {
-                            budget -= car.getPrice() * (0.15 + 0.06);
-                            car.setPrice(car.getPrice() * 2);
-                            car.setBrokenEngine(false);
-                        }
-                        case "Peugeot", "Renault", "Citroen" -> {
-                            budget -= car.getPrice() * (0.15 + 0.05);
-                            car.setPrice(car.getPrice() * 2);
-                            car.setBrokenEngine(false);
-                        }
-                    }
-                }
-            }
-        }
-        if (car.isBrokenBrakes()) {
-            if (Math.random() < 0.1) {
-                System.out.println("Marianowi nie udało mu się naprawić hamulców");
-                System.out.println("Interweniował mechaniczny Janusz xD");
-                car.setBrokenBrakes(true);
-                repairCarByMechanicJanusz(car);
-            } else {
-                if (Math.random() < 0.01) {
-                    car.setBrokenBrakes(true);
-                    System.out.println("Mechanic Marian zepsuł hamulce");
-                } else {
-                    switch (car.getModel()) {
-                        case "Mercedes","Audi","BMW" -> {
-                            budget -= car.getPrice() * (0.15 + 0.2);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenBrakes(false);
-                        }
-                        case "Volvo","Ford","Volkswagen" -> {
-                            budget -= car.getPrice() * (0.15 + 0.1);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenBrakes(false);
-                        }
-                        case  "Toyota", "Honda", "Kia","Mazda","Suzuki" -> {
-                            budget -= car.getPrice() * (0.15 + 0.08);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenBrakes(false);
-                        }
-                        case "Skoda","Hyundai","Nissan" -> {
-                            budget -= car.getPrice() * (0.15 + 0.07);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenBrakes(false);
-                        }
-                        case "Fiat", "Opel",  "Dacia" -> {
-                            budget -= car.getPrice() * (0.15 + 0.06);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenBrakes(false);
-                        }
-                        case "Peugeot", "Renault", "Citroen" -> {
-                            budget -= car.getPrice() * (0.15 + 0.05);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenBrakes(false);
-                        }
-                    }
-                }
-            }
-        }
-        if (car.isBrokenTransmission()) {
-            if (Math.random() < 0.1) {
-                System.out.println("Marianowi nie udało mu się naprawić skrzyni biegów");
-                System.out.println("Interweniował mechaniczny Janusz xD");
-                car.setBrokenTransmission(true);
-                repairCarByMechanicJanusz(car);
-            } else {
-                if (Math.random() < 0.01) {
-                    car.setBrokenTransmission(true);
-                    System.out.println("Marianowi zepsuł skrzynię biegów");
-                } else {
-                    switch (car.getModel()) {
-                        case "Mercedes","Audi","BMW" -> {
-                            budget -= car.getPrice() * (0.15 + 0.2);
-                            car.setPrice((int) (car.getPrice() * 1.6));
-                            car.setBrokenTransmission(false);
-                        }
-                        case "Volvo","Ford","Volkswagen" -> {
-                            budget -= car.getPrice() * (0.15 + 0.1);
-                            car.setPrice((int) (car.getPrice() * 1.6));
-                            car.setBrokenTransmission(false);
-                        }
-                        case  "Toyota", "Honda", "Kia","Mazda","Suzuki" -> {
-                            budget -= car.getPrice() * (0.15 + 0.08);
-                            car.setPrice((int) (car.getPrice() * 1.6));
-                            car.setBrokenTransmission(false);
-                        }
-                        case "Skoda","Hyundai","Nissan" -> {
-                            budget -= car.getPrice() * (0.15 + 0.07);
-                            car.setPrice((int) (car.getPrice() * 1.6));
-                            car.setBrokenTransmission(false);
-                        }
-                        case "Fiat", "Opel",  "Dacia" -> {
-                            budget -= car.getPrice() * (0.15 + 0.06);
-                            car.setPrice((int) (car.getPrice() * 1.6));
-                            car.setBrokenTransmission(false);
-                        }
-                        case "Peugeot", "Renault", "Citroen" -> {
-                            budget -= car.getPrice() * (0.15 + 0.05);
-                            car.setPrice((int) (car.getPrice() * 1.6));
-                            car.setBrokenTransmission(false);
-                        }
-                    }
-                }
-            }
-
-        }
-        if (car.isBrokenLights()) {
-            if (Math.random() < 0.1) {
-                System.out.println("Marianowi nie udało mu się naprawić świateł");
-                System.out.println("Interweniował mechaniczny Janusz xD");
-                car.setBrokenLights(true);
-                repairCarByMechanicJanusz(car);
-            } else {
-                if (Math.random() < 0.01) {
-                    car.setBrokenLights(true);
-                    System.out.println("Mechanic Marian zepsuł światła");
-                } else {
-                    switch (car.getModel()) {
-                        case "Mercedes","Audi","BMW" -> {
-                            budget -= car.getPrice() * (0.15 + 0.2);
-                            car.setPrice((int) (car.getPrice() * 1.1));
-                            car.setBrokenLights(false);
-                        }
-                        case "Volvo","Ford","Volkswagen" -> {
-                            budget -= car.getPrice() * (0.15 + 0.1);
-                            car.setPrice((int) (car.getPrice() * 1.1));
-                            car.setBrokenLights(false);
-                        }
-                        case  "Toyota", "Honda", "Kia","Mazda","Suzuki" -> {
-                            budget -= car.getPrice() * (0.15 + 0.08);
-                            car.setPrice((int) (car.getPrice() * 1.1));
-                            car.setBrokenLights(false);
-                        }
-                        case "Skoda","Hyundai","Nissan" -> {
-                            budget -= car.getPrice() * (0.15 + 0.07);
-                            car.setPrice((int) (car.getPrice() * 1.1));
-                            car.setBrokenLights(false);
-                        }
-                        case "Fiat", "Opel",  "Dacia" -> {
-                            budget -= car.getPrice() * (0.15 + 0.06);
-                            car.setPrice((int) (car.getPrice() * 1.1));
-                            car.setBrokenLights(false);
-                        }
-                        case "Peugeot", "Renault", "Citroen" -> {
-                            budget -= car.getPrice() * (0.15 + 0.05);
-                            car.setPrice((int) (car.getPrice() * 1.1));
-                            car.setBrokenLights(false);
-                        }
-                    }
-                }
-            }
-        }
-        if (car.isBrokenWheels()) {
-            if (Math.random() < 0.1) {
-                System.out.println(" Marianowi nie udało mu się naprawić opon");
-                System.out.println("Interweniował mechaniczny Janusz xD");
-                car.setBrokenWheels(true);
-                repairCarByMechanicJanusz(car);
-            } else {
-                if (Math.random() < 0.01) {
-                    car.setBrokenWheels(true);
-                    System.out.println("Mechanic Marian zepsuł opony");
-                } else {
-                    switch (car.getModel()) {
-                        case "Mercedes","Audi","BMW" -> {
-                            budget -= car.getPrice() * (0.15 + 0.2);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenWheels(false);
-                        }
-                        case "Volvo","Ford","Volkswagen" -> {
-                            budget -= car.getPrice() * (0.15 + 0.1);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenWheels(false);
-                        }
-                        case  "Toyota", "Honda", "Kia","Mazda","Suzuki" -> {
-                            budget -= car.getPrice() * (0.15 + 0.08);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenWheels(false);
-                        }
-                        case "Skoda","Hyundai","Nissan" -> {
-                            budget -= car.getPrice() * (0.15 + 0.07);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenWheels(false);
-                        }
-                        case "Fiat", "Opel",  "Dacia" -> {
-                            budget -= car.getPrice() * (0.15 + 0.06);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenWheels(false);
-                        }
-                        case "Peugeot", "Renault", "Citroen" -> {
-                            budget -= car.getPrice() * (0.15 + 0.05);
-                            car.setPrice((int) (car.getPrice() * 1.2));
-                            car.setBrokenWheels(false);
-                        }
-                    }
-                }
-            }
         }
 
 
     }
 
+    public void repairCarByMechanicJanusz(Car car, String partToRepair) {
+        if (partToRepair.equals("Engine")) {
+            if (car.isBrokenEngine()) {
+                if (Math.random() < 0.001) {
+                    System.out.println("Mechanic Janusz nie udało mu się naprawić silnika");
+                    car.setBrokenEngine(true);
+                } else {
+                    if (Math.random() < 0.0001) {
+                        car.setBrokenEngine(true);
+                        System.out.println("Mechanic Janusz zepsuł silnik");
+                    } else {
+                        switch (car.getModel()) {
+                            case "Mercedes", "Audi", "BMW" -> {
+                                budget -= car.getPrice() * (0.15 + 0.11);
+                                car.setPrice((int) (car.getPrice() * 2.5));
+                                car.setBrokenEngine(false);
+                            }
+                            case "Volvo", "Ford", "Volkswagen" -> {
+                                budget -= car.getPrice() * (0.15 + 0.09);
+                                car.setPrice((int) (car.getPrice() * 2.5));
+                                car.setBrokenEngine(false);
+                            }
+                            case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
+                                budget -= car.getPrice() * (0.15 + 0.08);
+                                car.setPrice((int) (car.getPrice() * 2.5));
+                                car.setBrokenEngine(false);
+                            }
+                            case "Skoda", "Hyundai", "Nissan" -> {
+                                budget -= car.getPrice() * (0.15 + 0.07);
+                                car.setPrice((int) (car.getPrice() * 2.5));
+                                car.setBrokenEngine(false);
+                            }
+                            case "Fiat", "Opel", "Dacia" -> {
+                                budget -= car.getPrice() * (0.15 + 0.06);
+                                car.setPrice((int) (car.getPrice() * 2.5));
+                                car.setBrokenEngine(false);
+                            }
+                            case "Peugeot", "Renault", "Citroen" -> {
+                                budget -= car.getPrice() * (0.15 + 0.05);
+                                car.setPrice((int) (car.getPrice() * 2.5));
+                                car.setBrokenEngine(false);
+                            }
+                        }
+                    }
+                }
+            }
 
-    public int repairCostJanusz(Car carToRepair) {
+        }
+
+        if (partToRepair.equals("Brakes")) {
+            if (car.isBrokenBrakes()) {
+                if (Math.random() < 0.001) {
+                    System.out.println("Mechanic Janusz nie udało mu się naprawić hamulców");
+                    car.setBrokenBrakes(true);
+                } else {
+                    if (Math.random() < 0.0001) {
+                        car.setBrokenBrakes(true);
+                        System.out.println("Mechanic Janusz zepsuł hamulce");
+                    } else {
+                        switch (car.getModel()) {
+                            case "Mercedes", "Audi", "BMW" -> {
+                                budget -= car.getPrice() * (0.05 + 0.07);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenBrakes(false);
+                            }
+                            case "Volvo", "Ford", "Volkswagen" -> {
+                                budget -= car.getPrice() * (0.05 + 0.06);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenBrakes(false);
+                            }
+                            case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
+                                budget -= car.getPrice() * (0.05 + 0.05);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenBrakes(false);
+                            }
+                            case "Skoda", "Hyundai", "Nissan" -> {
+                                budget -= car.getPrice() * (0.05 + 0.04);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenBrakes(false);
+                            }
+                            case "Fiat", "Opel", "Dacia" -> {
+                                budget -= car.getPrice() * (0.05 + 0.03);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenBrakes(false);
+                            }
+                            case "Peugeot", "Renault", "Citroen" -> {
+                                budget -= car.getPrice() * (0.05 + 0.02);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenBrakes(false);
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+
+        if (partToRepair.equals("Transmission")) {
+            if (car.isBrokenTransmission()) {
+                if (Math.random() < 0.001) {
+                    System.out.println("Mechanic Janusz nie udało mu się naprawić skrzyni biegów");
+                    car.setBrokenTransmission(true);
+                } else {
+                    if (Math.random() < 0.0001) {
+                        car.setBrokenTransmission(true);
+                        System.out.println("Mechanic Janusz zepsuł skrzynię biegów");
+                    } else {
+                        switch (car.getModel()) {
+                            case "Mercedes", "Audi", "BMW" -> {
+                                budget -= car.getPrice() * (0.15 + 0.1);
+                                car.setPrice((int) (car.getPrice() * 1.9));
+                                car.setBrokenTransmission(false);
+                            }
+                            case "Volvo", "Ford", "Volkswagen" -> {
+                                budget -= car.getPrice() * (0.15 + 0.09);
+                                car.setPrice((int) (car.getPrice() * 1.9));
+                                car.setBrokenTransmission(false);
+                            }
+                            case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
+                                budget -= car.getPrice() * (0.15 + 0.08);
+                                car.setPrice((int) (car.getPrice() * 1.9));
+                                car.setBrokenTransmission(false);
+                            }
+                            case "Skoda", "Hyundai", "Nissan" -> {
+                                budget -= car.getPrice() * (0.15 + 0.07);
+                                car.setPrice((int) (car.getPrice() * 1.9));
+                                car.setBrokenTransmission(false);
+                            }
+                            case "Fiat", "Opel", "Dacia" -> {
+                                budget -= car.getPrice() * (0.15 + 0.06);
+                                car.setPrice((int) (car.getPrice() * 1.9));
+                                car.setBrokenTransmission(false);
+                            }
+                            case "Peugeot", "Renault", "Citroen" -> {
+                                budget -= car.getPrice() * (0.15 + 0.05);
+                                car.setPrice((int) (car.getPrice() * 1.9));
+                                car.setBrokenTransmission(false);
+                            }
+                        }
+                    }
+                }
+
+            }
+
+        }
+
+        if (partToRepair.equals("Lights")) {
+            if (car.isBrokenLights()) {
+                if (Math.random() < 0.001) {
+                    System.out.println("Mechanic Janusz nie udało mu się naprawić świateł");
+                    car.setBrokenLights(true);
+                } else {
+                    if (Math.random() < 0.0001) {
+                        car.setBrokenLights(true);
+                        System.out.println("Mechanic Janusz zepsuł światła");
+                    } else {
+                        switch (car.getModel()) {
+                            case "Mercedes", "Audi", "BMW" -> {
+                                budget -= car.getPrice() * (0.07 + 0.1);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenLights(false);
+                            }
+                            case "Volvo", "Ford", "Volkswagen" -> {
+                                budget -= car.getPrice() * (0.07 + 0.09);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenLights(false);
+                            }
+                            case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
+                                budget -= car.getPrice() * (0.07 + 0.08);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenLights(false);
+                            }
+                            case "Skoda", "Hyundai", "Nissan" -> {
+                                budget -= car.getPrice() * (0.07 + 0.07);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenLights(false);
+                            }
+                            case "Fiat", "Opel", "Dacia" -> {
+                                budget -= car.getPrice() * (0.07 + 0.06);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenLights(false);
+                            }
+                            case "Peugeot", "Renault", "Citroen" -> {
+                                budget -= car.getPrice() * (0.07 + 0.05);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenLights(false);
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+        if (partToRepair.equals("Wheels")) {
+            if (car.isBrokenWheels()) {
+                if (Math.random() < 0.001) {
+                    System.out.println("Mechanic Janusz nie udało mu się naprawić opon");
+                    car.setBrokenWheels(true);
+                } else {
+                    if (Math.random() < 0.0001) {
+                        car.setBrokenWheels(true);
+                        System.out.println("Mechanic Janusz zepsuł opony");
+                    } else {
+                        switch (car.getModel()) {
+                            case "Mercedes", "Audi", "BMW" -> {
+                                budget -= car.getPrice() * (0.05 + 0.1);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenWheels(false);
+                            }
+                            case "Volvo", "Ford", "Volkswagen" -> {
+                                budget -= car.getPrice() * (0.05 + 0.09);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenWheels(false);
+                            }
+                            case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
+                                budget -= car.getPrice() * (0.05 + 0.08);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenWheels(false);
+                            }
+                            case "Skoda", "Hyundai", "Nissan" -> {
+                                budget -= car.getPrice() * (0.05 + 0.07);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenWheels(false);
+                            }
+                            case "Fiat", "Opel", "Dacia" -> {
+                                budget -= car.getPrice() * (0.05 + 0.06);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenWheels(false);
+                            }
+                            case "Peugeot", "Renault", "Citroen" -> {
+                                budget -= car.getPrice() * (0.05 + 0.05);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenWheels(false);
+                            }
+                        }
+                    }
+                }
+            }
+
+
+        }
+
+
+    }
+
+    public void repairCarByMechanicAdrian(Car car, String partToRepair) {
+        if (partToRepair.equals("Engine")) {
+            if (car.isBrokenEngine()) {
+                if (Math.random() < 0.25) {
+                    System.out.println("Mechanic Adrian nie udało mu się naprawić silnika");
+                    car.setBrokenEngine(true);
+                } else {
+                    if (Math.random() < 0.1) {
+                        car.setBrokenEngine(true);
+                        System.out.println("Mechanic Adrian zepsuł silnik");
+                    } else {
+                        switch (car.getModel()) {
+                            case "Mercedes", "Audi", "BMW" -> {
+                                budget -= car.getPrice() * (0.05 + 0.11);
+                                car.setPrice((int) (car.getPrice() * 2.5));
+                                car.setBrokenEngine(false);
+                            }
+                            case "Volvo", "Ford", "Volkswagen" -> {
+                                budget -= car.getPrice() * (0.05 + 0.09);
+                                car.setPrice((int) (car.getPrice() * 2.5));
+                                car.setBrokenEngine(false);
+                            }
+                            case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
+                                budget -= car.getPrice() * (0.05 + 0.08);
+                                car.setPrice((int) (car.getPrice() * 2.5));
+                                car.setBrokenEngine(false);
+                            }
+                            case "Skoda", "Hyundai", "Nissan" -> {
+                                budget -= car.getPrice() * (0.05 + 0.07);
+                                car.setPrice((int) (car.getPrice() * 2.5));
+                                car.setBrokenEngine(false);
+                            }
+                            case "Fiat", "Opel", "Dacia" -> {
+                                budget -= car.getPrice() * (0.05 + 0.06);
+                                car.setPrice((int) (car.getPrice() * 2.5));
+                                car.setBrokenEngine(false);
+                            }
+                            case "Peugeot", "Renault", "Citroen" -> {
+                                budget -= car.getPrice() * (0.05 + 0.05);
+                                car.setPrice((int) (car.getPrice() * 2.5));
+                                car.setBrokenEngine(false);
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+
+        if (partToRepair.equals("Brakes")) {
+            if (car.isBrokenBrakes()) {
+                if (Math.random() < 0.2) {
+                    System.out.println("Mechanic Adrian nie udało mu się naprawić hamulców");
+                    car.setBrokenBrakes(true);
+                } else {
+                    if (Math.random() < 0.1) {
+                        car.setBrokenBrakes(true);
+                        System.out.println("Mechanic Adrian zepsuł hamulce");
+                    } else {
+                        switch (car.getModel()) {
+                            case "Mercedes", "Audi", "BMW" -> {
+                                budget -= car.getPrice() * (0.02 + 0.07);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenBrakes(false);
+                            }
+                            case "Volvo", "Ford", "Volkswagen" -> {
+                                budget -= car.getPrice() * (0.02 + 0.6);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenBrakes(false);
+                            }
+                            case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
+                                budget -= car.getPrice() * (0.02 + 0.05);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenBrakes(false);
+                            }
+                            case "Skoda", "Hyundai", "Nissan" -> {
+                                budget -= car.getPrice() * (0.02 + 0.04);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenBrakes(false);
+                            }
+                            case "Fiat", "Opel", "Dacia" -> {
+                                budget -= car.getPrice() * (0.02 + 0.03);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenBrakes(false);
+                            }
+                            case "Peugeot", "Renault", "Citroen" -> {
+                                budget -= car.getPrice() * (0.02 + 0.02);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenBrakes(false);
+                            }
+                        }
+                    }
+                }
+            }
+
+
+        }
+        if (partToRepair.equals("Transmission")) {
+            if (car.isBrokenTransmission()) {
+                if (Math.random() < 0.2) {
+                    System.out.println("Mechanic Adrian nie udało mu się naprawić skrzyni biegów");
+                    car.setBrokenTransmission(true);
+                } else {
+                    if (Math.random() < 0.1) {
+                        car.setBrokenTransmission(true);
+                        System.out.println("Mechanic Adrian zepsuł skrzynię biegów");
+                    } else {
+                        switch (car.getModel()) {
+                            case "Mercedes", "Audi", "BMW" -> {
+                                budget -= car.getPrice() * (0.05 + 0.1);
+                                car.setPrice((int) (car.getPrice() * 1.9));
+                                car.setBrokenTransmission(false);
+                            }
+                            case "Volvo", "Ford", "Volkswagen" -> {
+                                budget -= car.getPrice() * (0.05 + 0.09);
+                                car.setPrice((int) (car.getPrice() * 1.9));
+                                car.setBrokenTransmission(false);
+                            }
+                            case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
+                                budget -= car.getPrice() * (0.05 + 0.08);
+                                car.setPrice((int) (car.getPrice() * 1.9));
+                                car.setBrokenTransmission(false);
+                            }
+                            case "Skoda", "Hyundai", "Nissan" -> {
+                                budget -= car.getPrice() * (0.05 + 0.07);
+                                car.setPrice((int) (car.getPrice() * 1.9));
+                                car.setBrokenTransmission(false);
+                            }
+                            case "Fiat", "Opel", "Dacia" -> {
+                                budget -= car.getPrice() * (0.05 + 0.06);
+                                car.setPrice((int) (car.getPrice() * 1.9));
+                                car.setBrokenTransmission(false);
+                            }
+                            case "Peugeot", "Renault", "Citroen" -> {
+                                budget -= car.getPrice() * (0.05 + 0.05);
+                                car.setPrice((int) (car.getPrice() * 1.9));
+                                car.setBrokenTransmission(false);
+                            }
+                        }
+                    }
+                }
+
+            }
+
+
+        }
+
+        if (partToRepair.equals("Lights")) {
+            if (car.isBrokenLights()) {
+                if (Math.random() < 0.2) {
+                    System.out.println("Mechanic Adrian nie udało mu się naprawić świateł");
+                    car.setBrokenLights(true);
+                } else {
+                    if (Math.random() < 0.1) {
+                        car.setBrokenLights(true);
+                        System.out.println("Mechanic Adrian zepsuł światła");
+                    } else {
+                        switch (car.getModel()) {
+                            case "Mercedes", "Audi", "BMW" -> {
+                                budget -= car.getPrice() * (0.02 + 0.1);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenLights(false);
+                            }
+                            case "Volvo", "Ford", "Volkswagen" -> {
+                                budget -= car.getPrice() * (0.02 + 0.09);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenLights(false);
+                            }
+                            case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
+                                budget -= car.getPrice() * (0.02 + 0.08);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenLights(false);
+                            }
+                            case "Skoda", "Hyundai", "Nissan" -> {
+                                budget -= car.getPrice() * (0.02 + 0.07);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenLights(false);
+                            }
+                            case "Fiat", "Opel", "Dacia" -> {
+                                budget -= car.getPrice() * (0.02 + 0.06);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenLights(false);
+                            }
+                            case "Peugeot", "Renault", "Citroen" -> {
+                                budget -= car.getPrice() * (0.02 + 0.05);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenLights(false);
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+
+
+        if (partToRepair.equals("Wheels")) {
+            if (car.isBrokenWheels()) {
+                if (Math.random() < 0.2) {
+                    System.out.println("Mechanic Adrian nie udało mu się naprawić opon");
+                    car.setBrokenWheels(true);
+                } else {
+                    if (Math.random() < 0.1) {
+                        car.setBrokenWheels(true);
+                        System.out.println("Mechanic Adrian zepsuł opony");
+                    } else {
+                        switch (car.getModel()) {
+                            case "Mercedes", "Audi", "BMW" -> {
+                                budget -= car.getPrice() * (0.02 + 0.1);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenWheels(false);
+                            }
+                            case "Volvo", "Ford", "Volkswagen" -> {
+                                budget -= car.getPrice() * (0.02 + 0.09);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenWheels(false);
+                            }
+                            case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
+                                budget -= car.getPrice() * (0.02 + 0.08);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenWheels(false);
+                            }
+                            case "Skoda", "Hyundai", "Nissan" -> {
+                                budget -= car.getPrice() * (0.02 + 0.07);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenWheels(false);
+                            }
+                            case "Fiat", "Opel", "Dacia" -> {
+                                budget -= car.getPrice() * (0.02 + 0.06);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenWheels(false);
+                            }
+                            case "Peugeot", "Renault", "Citroen" -> {
+                                budget -= car.getPrice() * (0.02 + 0.05);
+                                car.setPrice((int) (car.getPrice() * 1.4));
+                                car.setBrokenWheels(false);
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+
+
+    }
+
+    public int repairCostAdrian(Car carToRepair, String partToRepair) {
         int repairCost = 0;
-        if (carToRepair.isBrokenEngine()) {
-            repairCost += carToRepair.getPrice() * 0.2;
-        }
-        if (carToRepair.isBrokenTransmission()) {
-            repairCost += carToRepair.getPrice() * 0.1;
-        }
-        if (carToRepair.isBrokenLights()) {
-            repairCost += carToRepair.getPrice() * 0.1;
-        }
-        if (carToRepair.isBrokenWheels()) {
-            repairCost += carToRepair.getPrice() * 0.2;
+        switch (partToRepair) {
+            case "engine" -> {
+                if (carToRepair.isBrokenEngine()) {
+                    switch (carToRepair.getModel()) {
+                        case "Mercedes", "Audi", "BMW" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.11));
+                        }
+                        case "Volvo", "Ford", "Volkswagen" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.09));
+                        }
+                        case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.08));
+                        }
+                        case "Skoda", "Hyundai", "Nissan" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.07));
+                        }
+                        case "Fiat", "Opel", "Dacia" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.06));
+                        }
+                        case "Peugeot", "Renault", "Citroen" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.05));
+                        }
+                    }
+                }
+            }
+            case "transmission" -> {
+                if (carToRepair.isBrokenTransmission()) {
+                    switch (carToRepair.getModel()) {
+                        case "Mercedes", "Audi", "BMW" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.1));
+                        }
+                        case "Volvo", "Ford", "Volkswagen" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.09));
+                        }
+                        case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.05+ 0.08));
+                        }
+                        case "Skoda", "Hyundai", "Nissan" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.05+ 0.07));
+                        }
+                        case "Fiat", "Opel", "Dacia" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.05+ 0.06));
+                        }
+                        case "Peugeot", "Renault", "Citroen" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.05+ 0.05));
+                        }
+                    }
+                }
+            }
+            case "wheels" -> {
+                if (carToRepair.isBrokenWheels()) {
+                    switch (carToRepair.getModel()) {
+                        case "Mercedes", "Audi", "BMW" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.1));
+                        }
+                        case "Volvo", "Ford", "Volkswagen" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.09));
+                        }
+                        case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.08));
+                        }
+                        case "Skoda", "Hyundai", "Nissan" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.07));
+                        }
+                        case "Fiat", "Opel", "Dacia" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.06));
+                        }
+                        case "Peugeot", "Renault", "Citroen" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.05));
+                        }
+                    }
+                }
+            }
+            case "brakes" -> {
+                if (carToRepair.isBrokenBrakes()) {
+                    switch (carToRepair.getModel()) {
+                        case "Mercedes", "Audi", "BMW" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.07));
+                        }
+                        case "Volvo", "Ford", "Volkswagen" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.06));
+                        }
+                        case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.05));
+                        }
+                        case "Skoda", "Hyundai", "Nissan" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.04));
+                        }
+                        case "Fiat", "Opel", "Dacia" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.03));
+                        }
+                        case "Peugeot", "Renault", "Citroen" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.02));
+                        }
+                    }
+                }
+            }
+            case "lights" -> {
+                if (carToRepair.isBrokenLights()) {
+                    switch (carToRepair.getModel()) {
+                        case "Mercedes", "Audi", "BMW" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.1));
+                        }
+                        case "Volvo", "Ford", "Volkswagen" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.09));
+                        }
+                        case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.08));
+                        }
+                        case "Skoda", "Hyundai", "Nissan" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.07));
+                        }
+                        case "Fiat", "Opel", "Dacia" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.06));
+                        }
+                        case "Peugeot", "Renault", "Citroen" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.05));
+                        }
+                    }
+                }
+            }
         }
         return repairCost;
     }
 
-    public int repairCostAdrian(Car carToRepair) {
+    public int repairCostMarian(Car carToRepair, String partToRepair) {
         int repairCost = 0;
-        if (carToRepair.isBrokenEngine()) {
-            repairCost += carToRepair.getPrice() * 0.2;
-        }
-        if (carToRepair.isBrokenTransmission()) {
-            repairCost += carToRepair.getPrice() * 0.1;
-        }
-        if (carToRepair.isBrokenLights()) {
-            repairCost += carToRepair.getPrice() * 0.1;
-        }
-        if (carToRepair.isBrokenWheels()) {
-            repairCost += carToRepair.getPrice() * 0.2;
+        switch (partToRepair) {
+            case "engine" -> {
+                if (carToRepair.isBrokenEngine()) {
+                    switch (carToRepair.getModel()) {
+                        case "Mercedes", "Audi", "BMW" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.1 + 0.11));
+                        }
+                        case "Volvo", "Ford", "Volkswagen" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.1 + 0.09));
+                        }
+                        case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.1 + 0.08));
+                        }
+                        case "Skoda", "Hyundai", "Nissan" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.1 + 0.07));
+                        }
+                        case "Fiat", "Opel", "Dacia" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.1 + 0.06));
+                        }
+                        case "Peugeot", "Renault", "Citroen" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.1 + 0.05));
+                        }
+                    }
+                }
+            }
+            case "transmission" -> {
+                if (carToRepair.isBrokenTransmission()) {
+                    switch (carToRepair.getModel()) {
+                        case "Mercedes", "Audi", "BMW" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.1 + 0.1));
+                        }
+                        case "Volvo", "Ford", "Volkswagen" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.1 + 0.09));
+                        }
+                        case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.1 + 0.08));
+                        }
+                        case "Skoda", "Hyundai", "Nissan" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.1 + 0.07));
+                        }
+                        case "Fiat", "Opel", "Dacia" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.1 + 0.06));
+                        }
+                        case "Peugeot", "Renault", "Citroen" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.1 + 0.05));
+                        }
+                    }
+                }
+            }
+            case "brakes" -> {
+                if (carToRepair.isBrokenBrakes()) {
+                    switch (carToRepair.getModel()) {
+                        case "Mercedes", "Audi", "BMW" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.03 + 0.07));
+                        }
+                        case "Volvo", "Ford", "Volkswagen" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.03 + 0.06));
+                        }
+                        case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.03 + 0.05));
+                        }
+                        case "Skoda", "Hyundai", "Nissan" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.03 + 0.04));
+                        }
+                        case "Fiat", "Opel", "Dacia" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.03 + 0.03));
+                        }
+                        case "Peugeot", "Renault", "Citroen" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.03 + 0.02));
+                        }
+                    }
+                }
+            }
+            case "lights" -> {
+                if (carToRepair.isBrokenLights()) {
+                    switch (carToRepair.getModel()) {
+                        case "Mercedes", "Audi", "BMW" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.1));
+                        }
+                        case "Volvo", "Ford", "Volkswagen" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.09));
+                        }
+                        case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.08));
+                        }
+                        case "Skoda", "Hyundai", "Nissan" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.07));
+                        }
+                        case "Fiat", "Opel", "Dacia" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.06));
+                        }
+                        case "Peugeot", "Renault", "Citroen" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.05));
+                        }
+                    }
+                }
+            }
+            case "wheels" -> {
+                if (carToRepair.isBrokenWheels()) {
+                    switch (carToRepair.getModel()) {
+                        case "Mercedes", "Audi", "BMW" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.03 + 0.1));
+                        }
+                        case "Volvo", "Ford", "Volkswagen" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.03 + 0.09));
+                        }
+                        case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.03 + 0.08));
+                        }
+                        case "Skoda", "Hyundai", "Nissan" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.03 + 0.07));
+                        }
+                        case "Fiat", "Opel", "Dacia" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.03 + 0.06));
+                        }
+                        case "Peugeot", "Renault", "Citroen" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.03 + 0.05));
+                        }
+                    }
+                }
+            }
         }
         return repairCost;
     }
 
-    public int repairCostMarian(Car carToRepair) {
+
+    public int repairCostJanusz(Car carToRepair, String partToRepair) {
         int repairCost = 0;
-        if (carToRepair.isBrokenEngine()) {
-            repairCost += carToRepair.getPrice() * 0.2;
-        }
-        if (carToRepair.isBrokenTransmission()) {
-            repairCost += carToRepair.getPrice() * 0.1;
-        }
-        if (carToRepair.isBrokenLights()) {
-            repairCost += carToRepair.getPrice() * 0.1;
-        }
-        if (carToRepair.isBrokenWheels()) {
-            repairCost += carToRepair.getPrice() * 0.2;
+        switch (partToRepair) {
+            case "engine" -> {
+                if (carToRepair.isBrokenEngine()) {
+                    switch (carToRepair.getModel()) {
+                        case "Mercedes", "Audi", "BMW" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.15 + 0.11));
+                        }
+                        case "Volvo", "Ford", "Volkswagen" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.15 + 0.09));
+                        }
+                        case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.15 + 0.08));
+                        }
+                        case "Skoda", "Hyundai", "Nissan" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.15 + 0.07));
+                        }
+                        case "Fiat", "Opel", "Dacia" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.15 + 0.06));
+                        }
+                        case "Peugeot", "Renault", "Citroen" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.15 + 0.05));
+                        }
+                    }
+                }
+            }
+            case "transmission" -> {
+                if (carToRepair.isBrokenTransmission()) {
+                    switch (carToRepair.getModel()) {
+                        case "Mercedes", "Audi", "BMW" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.15 + 0.1));
+                        }
+                        case "Volvo", "Ford", "Volkswagen" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.15 + 0.09));
+                        }
+                        case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.15 + 0.08));
+                        }
+                        case "Skoda", "Hyundai", "Nissan" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.15 + 0.07));
+                        }
+                        case "Fiat", "Opel", "Dacia" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.15 + 0.06));
+                        }
+                        case "Peugeot", "Renault", "Citroen" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.15 + 0.05));
+                        }
+                    }
+                }
+            }
+            case "lights" -> {
+                if (carToRepair.isBrokenLights()) {
+                    switch (carToRepair.getModel()) {
+                        case "Mercedes", "Audi", "BMW" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.07 + 0.1));
+                        }
+                        case "Volvo", "Ford", "Volkswagen" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.07 + 0.09));
+                        }
+                        case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.07 + 0.08));
+                        }
+                        case "Skoda", "Hyundai", "Nissan" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.07 + 0.07));
+                        }
+                        case "Fiat", "Opel", "Dacia" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.07 + 0.06));
+                        }
+                        case "Peugeot", "Renault", "Citroen" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.07 + 0.05));
+                        }
+                    }
+                }
+            }
+            case "wheels" -> {
+                if (carToRepair.isBrokenWheels()) {
+                    switch (carToRepair.getModel()) {
+                        case "Mercedes", "Audi", "BMW" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.1));
+                        }
+                        case "Volvo", "Ford", "Volkswagen" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.09));
+                        }
+                        case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.08));
+                        }
+                        case "Skoda", "Hyundai", "Nissan" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.07));
+                        }
+                        case "Fiat", "Opel", "Dacia" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.06));
+                        }
+                        case "Peugeot", "Renault", "Citroen" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.05));
+                        }
+                    }
+                }
+            }
+            case "brakes" -> {
+                if (carToRepair.isBrokenBrakes()) {
+                    switch (carToRepair.getModel()) {
+                        case "Mercedes", "Audi", "BMW" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.07));
+                        }
+                        case "Volvo", "Ford", "Volkswagen" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.06));
+                        }
+                        case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.05));
+                        }
+                        case "Skoda", "Hyundai", "Nissan" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.04));
+                        }
+                        case "Fiat", "Opel", "Dacia" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.03));
+                        }
+                        case "Peugeot", "Renault", "Citroen" -> {
+                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.02));
+                        }
+                    }
+                }
+            }
         }
         return repairCost;
     }
+
+
+
 }
