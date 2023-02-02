@@ -8,6 +8,10 @@ public class CarComis {
 
 
     public CarComis(Integer budget) {
+        if (budget < 0) {
+            throw new IllegalArgumentException("Wartość budżetu nie może być ujemna");
+        }
+        this.budget = budget;
         this.budget = budget;
         purchasedCars = new ArrayList<>();
     }
@@ -99,10 +103,7 @@ public class CarComis {
 
 
     public Integer getBudget() {
-        if (budget < 0) {
-            System.out.println("Wziełeś małą pożyczke ale bd się opłacać");
-        }
-        return (int) budget;
+        return (int) Math.max(0, budget);
     } // metoda zwracająca budżet
 
     public List<Car> getPurchasedCars() {
@@ -833,7 +834,54 @@ public class CarComis {
     }
 
 
+    public int repairCostJanusz(Car carToRepair) {
+        int repairCost = 0;
+        if (carToRepair.isBrokenEngine()) {
+            repairCost += carToRepair.getPrice() * 0.2;
+        }
+        if (carToRepair.isBrokenTransmission()) {
+            repairCost += carToRepair.getPrice() * 0.1;
+        }
+        if (carToRepair.isBrokenLights()) {
+            repairCost += carToRepair.getPrice() * 0.1;
+        }
+        if (carToRepair.isBrokenWheels()) {
+            repairCost += carToRepair.getPrice() * 0.2;
+        }
+        return repairCost;
+    }
 
+    public int repairCostAdrian(Car carToRepair) {
+        int repairCost = 0;
+        if (carToRepair.isBrokenEngine()) {
+            repairCost += carToRepair.getPrice() * 0.2;
+        }
+        if (carToRepair.isBrokenTransmission()) {
+            repairCost += carToRepair.getPrice() * 0.1;
+        }
+        if (carToRepair.isBrokenLights()) {
+            repairCost += carToRepair.getPrice() * 0.1;
+        }
+        if (carToRepair.isBrokenWheels()) {
+            repairCost += carToRepair.getPrice() * 0.2;
+        }
+        return repairCost;
+    }
 
-
+    public int repairCostMarian(Car carToRepair) {
+        int repairCost = 0;
+        if (carToRepair.isBrokenEngine()) {
+            repairCost += carToRepair.getPrice() * 0.2;
+        }
+        if (carToRepair.isBrokenTransmission()) {
+            repairCost += carToRepair.getPrice() * 0.1;
+        }
+        if (carToRepair.isBrokenLights()) {
+            repairCost += carToRepair.getPrice() * 0.1;
+        }
+        if (carToRepair.isBrokenWheels()) {
+            repairCost += carToRepair.getPrice() * 0.2;
+        }
+        return repairCost;
+    }
 }

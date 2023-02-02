@@ -24,16 +24,7 @@ public class Menu {
                 case "1" -> {
                     System.out.println("Kup samochód");
                     System.out.println("twój budżet: " + carComis.getBudget());
-                    printCars(randomCars);
-                    System.out.println("chcesz kupic samochod? (t/n)");
-                    String answer = scanner.next();
-                    if (answer.equals("t")) {
-                        purchaseCar(scanner, carComis, randomCars);
-                    } else if (answer.equals("n")) {
-                        continue;
-                    } else {
-                        System.out.println("Nie ma takiej opcji");
-                    }
+                    purchaseCar(scanner, carComis, randomCars);
 
 
                     break;
@@ -61,26 +52,24 @@ public class Menu {
                         System.out.println("2 Adrian");
                         System.out.println("3 Marian");
                         int mechanicIndex = scanner.nextInt();
+                        Car carToRepair = carComis.getPurchasedCars().get(carIndex - 1);
+                        int repairCost = 0;
                         switch (mechanicIndex) {
-                            case 1 -> {
-                                carComis.repairCarByMechanicJanusz(carComis.getPurchasedCars().get(carIndex - 1));
-                                System.out.println("twoj budzet: " + carComis.getBudget());
-                                System.out.println("cena samochodu po naprawie: " + carComis.getPurchasedCars().get(carIndex - 1).getPrice());
-                                break;
-                            }
-                            case 2 -> {
-                                carComis.repairCarByMechanicAdrian(carComis.getPurchasedCars().get(carIndex - 1));
-                                System.out.println("twoj budzet: " + carComis.getBudget());
-                                System.out.println("cena samochodu po naprawie: " + carComis.getPurchasedCars().get(carIndex - 1).getPrice());
-                                break;
-                            }
-                            case 3 -> {
-                                carComis.repairCarByMechanicMarian(carComis.getPurchasedCars().get(carIndex - 1));
-                                System.out.println("twoj budzet: " + carComis.getBudget());
-                                System.out.println("cena samochodu po naprawie: " + carComis.getPurchasedCars().get(carIndex - 1).getPrice());
-                                break;
-                            }
+                            case 1 -> repairCost = carComis.repairCostJanusz(carToRepair);
+                            case 2 -> repairCost = carComis.repairCostAdrian(carToRepair);
+                            case 3 -> repairCost = carComis.repairCostMarian(carToRepair);
                             default -> System.out.println("Nie ma takiego mechanika");
+                        }
+                        if (repairCost > carComis.getBudget()) {
+                            System.out.println("Nie masz wystarczających środków na naprawę.");
+                        } else {
+                            switch (mechanicIndex) {
+                                case 1 -> carComis.repairCarByMechanicJanusz(carToRepair);
+                                case 2 -> carComis.repairCarByMechanicAdrian(carToRepair);
+                                case 3 -> carComis.repairCarByMechanicMarian(carToRepair);
+                            }
+                            System.out.println("Twój budżet: " + carComis.getBudget());
+                            System.out.println("Cena samochodu po naprawie: " + carToRepair.getPrice());
                         }
                     }
 
@@ -113,10 +102,20 @@ public class Menu {
 
     private void purchaseCar(Scanner scanner, CarComis carComis, List<Car> randomCars) {
         System.out.println("Wybierz samochód do zakupu (podaj numer samochodu):");
+        System.out.println("albo wciśnij dowolną literę, aby wrócić do menu");
         printCars(randomCars);
-        int carIndex = scanner.nextInt();
-        Car carToPurchase = randomCars.get(carIndex - 1);
-        carComis.addPurchasedCar(carToPurchase, randomCars);
+        if (scanner.hasNextInt()) {
+            int carIndex = scanner.nextInt();
+            if (carIndex > 0 && carIndex <= randomCars.size()) {
+                Car carToPurchase = randomCars.get(carIndex - 1);
+                carComis.addPurchasedCar(carToPurchase, randomCars);
+            } else {
+                System.out.println("Nie ma takiego samochodu");
+            }
+        } else {
+            System.out.println("Podaj liczbę");
+            scanner.next();
+        }
 
     } //kup samochod
 
