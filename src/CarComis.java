@@ -143,8 +143,6 @@ public class CarComis {
     }// metoda sprzedająca samochód
 
 
-
-
     public void repairCarByMechanicMarian(Car car, String partToRepair) {
         if (partToRepair.equals("Engine")) {
             if (car.isBrokenEngine()) {
@@ -898,123 +896,125 @@ public class CarComis {
 
     public int repairCostAdrian(Car carToRepair, String partToRepair) {
         int repairCost = 0;
+
         switch (partToRepair) {
-            case "engine" -> {
+            case "Engine" -> {
                 if (carToRepair.isBrokenEngine()) {
                     switch (carToRepair.getModel()) {
                         case "Mercedes", "Audi", "BMW" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.11));
+                            return (int) (carToRepair.getPrice() * (0.05 + 0.11));
+
                         }
                         case "Volvo", "Ford", "Volkswagen" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.09));
+                            return (int) (carToRepair.getPrice() * (0.05 + 0.09));
                         }
                         case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.08));
+                            return (int) (carToRepair.getPrice() * (0.05 + 0.08));
                         }
                         case "Skoda", "Hyundai", "Nissan" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.07));
+                            return (int) (carToRepair.getPrice() * (0.05 + 0.07));
                         }
                         case "Fiat", "Opel", "Dacia" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.06));
+                            return (int) (carToRepair.getPrice() * (0.05 + 0.06));
                         }
                         case "Peugeot", "Renault", "Citroen" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.05));
+                            return (int) (carToRepair.getPrice() * (0.05 + 0.05));
                         }
                     }
                 }
             }
-            case "transmission" -> {
+            case "Transmission" -> {
                 if (carToRepair.isBrokenTransmission()) {
                     switch (carToRepair.getModel()) {
                         case "Mercedes", "Audi", "BMW" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.1));
+                            return (int) (carToRepair.getPrice() * (0.05 + 0.1));
                         }
                         case "Volvo", "Ford", "Volkswagen" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.09));
+                            return (int) (carToRepair.getPrice() * (0.05 + 0.09));
                         }
                         case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.05+ 0.08));
+                            return (int) (carToRepair.getPrice() * (0.05 + 0.08));
                         }
                         case "Skoda", "Hyundai", "Nissan" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.05+ 0.07));
+                            return (int) (carToRepair.getPrice() * (0.05 + 0.07));
                         }
                         case "Fiat", "Opel", "Dacia" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.05+ 0.06));
+                            return (int) (carToRepair.getPrice() * (0.05 + 0.06));
                         }
                         case "Peugeot", "Renault", "Citroen" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.05+ 0.05));
+                            return (int) (carToRepair.getPrice() * (0.05 + 0.05));
                         }
                     }
                 }
             }
-            case "wheels" -> {
+            case "Wheels" -> {
                 if (carToRepair.isBrokenWheels()) {
                     switch (carToRepair.getModel()) {
                         case "Mercedes", "Audi", "BMW" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.1));
+                            return (int) (carToRepair.getPrice() * (0.02 + 0.1));
                         }
                         case "Volvo", "Ford", "Volkswagen" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.09));
+                            return (int) (carToRepair.getPrice() * (0.02 + 0.09));
                         }
                         case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.08));
+                            return (int) (carToRepair.getPrice() * (0.02 + 0.08));
                         }
                         case "Skoda", "Hyundai", "Nissan" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.07));
+                            return (int) (carToRepair.getPrice() * (0.02 + 0.07));
                         }
                         case "Fiat", "Opel", "Dacia" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.06));
+                            return (int) (carToRepair.getPrice() * (0.02 + 0.06));
                         }
                         case "Peugeot", "Renault", "Citroen" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.05));
+                            return (int) (carToRepair.getPrice() * (0.02 + 0.05));
                         }
                     }
                 }
             }
-            case "brakes" -> {
+            case "Brakes" -> {
                 if (carToRepair.isBrokenBrakes()) {
                     switch (carToRepair.getModel()) {
                         case "Mercedes", "Audi", "BMW" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.07));
+                            return (int) (carToRepair.getPrice() * (0.02 + 0.07));
                         }
                         case "Volvo", "Ford", "Volkswagen" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.06));
+                            return (int) (carToRepair.getPrice() * (0.02 + 0.06));
                         }
                         case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.05));
+                            return (int) (carToRepair.getPrice() * (0.02 + 0.05));
                         }
                         case "Skoda", "Hyundai", "Nissan" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.04));
+                            return (int) (carToRepair.getPrice() * (0.02 + 0.04));
                         }
                         case "Fiat", "Opel", "Dacia" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.03));
+                            return (int) (carToRepair.getPrice() * (0.02 + 0.03));
                         }
                         case "Peugeot", "Renault", "Citroen" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.02));
+                            return (int) (carToRepair.getPrice() * (0.02 + 0.02));
                         }
                     }
                 }
             }
-            case "lights" -> {
+            case "Lights" -> {
                 if (carToRepair.isBrokenLights()) {
                     switch (carToRepair.getModel()) {
                         case "Mercedes", "Audi", "BMW" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.1));
+                            return (int) (carToRepair.getPrice() * (0.02 + 0.1));
                         }
                         case "Volvo", "Ford", "Volkswagen" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.09));
+                            return (int) (carToRepair.getPrice() * (0.02 + 0.09));
                         }
                         case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.08));
+                            return (int) (carToRepair.getPrice() * (0.02 + 0.08));
                         }
                         case "Skoda", "Hyundai", "Nissan" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.07));
+                            return (int) (carToRepair.getPrice() * (0.02 + 0.07));
                         }
                         case "Fiat", "Opel", "Dacia" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.06));
+                            return (int) (carToRepair.getPrice() * (0.02 + 0.06));
                         }
                         case "Peugeot", "Renault", "Citroen" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.02 + 0.05));
+                            return (int) (carToRepair.getPrice() * (0.02 + 0.05));
                         }
                     }
                 }
@@ -1026,250 +1026,262 @@ public class CarComis {
     public int repairCostMarian(Car carToRepair, String partToRepair) {
         int repairCost = 0;
         switch (partToRepair) {
-            case "engine" -> {
+            case "Engine" -> {
                 if (carToRepair.isBrokenEngine()) {
                     switch (carToRepair.getModel()) {
                         case "Mercedes", "Audi", "BMW" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.1 + 0.11));
+                            return (int) (carToRepair.getPrice() * (0.1 + 0.11));
                         }
                         case "Volvo", "Ford", "Volkswagen" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.1 + 0.09));
+                            return (int) (carToRepair.getPrice() * (0.1 + 0.09));
                         }
                         case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.1 + 0.08));
+                            return (int) (carToRepair.getPrice() * (0.1 + 0.08));
                         }
                         case "Skoda", "Hyundai", "Nissan" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.1 + 0.07));
+                            return (int) (carToRepair.getPrice() * (0.1 + 0.07));
                         }
                         case "Fiat", "Opel", "Dacia" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.1 + 0.06));
+                            return (int) (carToRepair.getPrice() * (0.1 + 0.06));
                         }
                         case "Peugeot", "Renault", "Citroen" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.1 + 0.05));
+                            return (int) (carToRepair.getPrice() * (0.1 + 0.05));
                         }
                     }
                 }
             }
-            case "transmission" -> {
+            case "Transmission" -> {
                 if (carToRepair.isBrokenTransmission()) {
                     switch (carToRepair.getModel()) {
                         case "Mercedes", "Audi", "BMW" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.1 + 0.1));
+                            return (int) (carToRepair.getPrice() * (0.1 + 0.1));
                         }
                         case "Volvo", "Ford", "Volkswagen" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.1 + 0.09));
+                            return (int) (carToRepair.getPrice() * (0.1 + 0.09));
                         }
                         case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.1 + 0.08));
+                            return (int) (carToRepair.getPrice() * (0.1 + 0.08));
                         }
                         case "Skoda", "Hyundai", "Nissan" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.1 + 0.07));
+                            return (int) (carToRepair.getPrice() * (0.1 + 0.07));
                         }
                         case "Fiat", "Opel", "Dacia" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.1 + 0.06));
+                            return (int) (carToRepair.getPrice() * (0.1 + 0.06));
                         }
                         case "Peugeot", "Renault", "Citroen" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.1 + 0.05));
+                            return (int) (carToRepair.getPrice() * (0.1 + 0.05));
                         }
                     }
                 }
             }
-            case "brakes" -> {
+            case "Brakes" -> {
                 if (carToRepair.isBrokenBrakes()) {
                     switch (carToRepair.getModel()) {
                         case "Mercedes", "Audi", "BMW" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.03 + 0.07));
+                            return (int) (carToRepair.getPrice() * (0.03 + 0.07));
                         }
                         case "Volvo", "Ford", "Volkswagen" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.03 + 0.06));
+                            return (int) (carToRepair.getPrice() * (0.03 + 0.06));
                         }
                         case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.03 + 0.05));
+                            return (int) (carToRepair.getPrice() * (0.03 + 0.05));
                         }
                         case "Skoda", "Hyundai", "Nissan" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.03 + 0.04));
+                            return (int) (carToRepair.getPrice() * (0.03 + 0.04));
                         }
                         case "Fiat", "Opel", "Dacia" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.03 + 0.03));
+                            return (int) (carToRepair.getPrice() * (0.03 + 0.03));
                         }
                         case "Peugeot", "Renault", "Citroen" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.03 + 0.02));
+                            return (int) (carToRepair.getPrice() * (0.03 + 0.02));
                         }
                     }
                 }
             }
-            case "lights" -> {
+            case "Lights" -> {
                 if (carToRepair.isBrokenLights()) {
                     switch (carToRepair.getModel()) {
                         case "Mercedes", "Audi", "BMW" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.1));
+                            return (int) (carToRepair.getPrice() * (0.05+ 0.1));
                         }
                         case "Volvo", "Ford", "Volkswagen" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.09));
+                            return (int) (carToRepair.getPrice() * (0.05 + 0.09));
                         }
                         case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.08));
+                            return (int) (carToRepair.getPrice() * (0.05 + 0.08));
                         }
                         case "Skoda", "Hyundai", "Nissan" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.07));
+                            return (int) (carToRepair.getPrice() * (0.05 + 0.07));
                         }
                         case "Fiat", "Opel", "Dacia" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.06));
+                            return (int) (carToRepair.getPrice() * (0.05 + 0.06));
                         }
                         case "Peugeot", "Renault", "Citroen" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.05));
+                            return (int) (carToRepair.getPrice() * (0.05 + 0.05));
                         }
                     }
                 }
             }
-            case "wheels" -> {
+            case "Wheels" -> {
                 if (carToRepair.isBrokenWheels()) {
                     switch (carToRepair.getModel()) {
                         case "Mercedes", "Audi", "BMW" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.03 + 0.1));
+                            return (int) (carToRepair.getPrice() * (0.03 + 0.1));
                         }
                         case "Volvo", "Ford", "Volkswagen" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.03 + 0.09));
+                            return (int) (carToRepair.getPrice() * (0.03 + 0.09));
                         }
                         case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.03 + 0.08));
+                            return (int) (carToRepair.getPrice() * (0.03 + 0.08));
                         }
                         case "Skoda", "Hyundai", "Nissan" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.03 + 0.07));
+                            return (int) (carToRepair.getPrice() * (0.03 + 0.07));
                         }
                         case "Fiat", "Opel", "Dacia" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.03 + 0.06));
+                            return (int) (carToRepair.getPrice() * (0.03 + 0.06));
                         }
                         case "Peugeot", "Renault", "Citroen" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.03 + 0.05));
+                            return (int) (carToRepair.getPrice() * (0.03 + 0.05));
                         }
                     }
                 }
             }
         }
-        return repairCost;
+        return 0;
     }
 
 
     public int repairCostJanusz(Car carToRepair, String partToRepair) {
         int repairCost = 0;
         switch (partToRepair) {
-            case "engine" -> {
+            case "Engine" -> {
                 if (carToRepair.isBrokenEngine()) {
                     switch (carToRepair.getModel()) {
                         case "Mercedes", "Audi", "BMW" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.15 + 0.11));
+                            return  (int) (carToRepair.getPrice() * (0.15 + 0.11));
+
                         }
                         case "Volvo", "Ford", "Volkswagen" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.15 + 0.09));
+                            return  (int) (carToRepair.getPrice() * (0.15 + 0.09));
+
                         }
                         case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.15 + 0.08));
+                            return  (int) (carToRepair.getPrice() * (0.15 + 0.08));
+
                         }
                         case "Skoda", "Hyundai", "Nissan" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.15 + 0.07));
+                            return  (int) (carToRepair.getPrice() * (0.15 + 0.07));
+
                         }
                         case "Fiat", "Opel", "Dacia" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.15 + 0.06));
+                            return  (int) (carToRepair.getPrice() * (0.15 + 0.06));
+
                         }
                         case "Peugeot", "Renault", "Citroen" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.15 + 0.05));
+                            return  (int) (carToRepair.getPrice() * (0.15 + 0.05));
+
                         }
                     }
                 }
             }
-            case "transmission" -> {
+            case "Transmission" -> {
                 if (carToRepair.isBrokenTransmission()) {
                     switch (carToRepair.getModel()) {
                         case "Mercedes", "Audi", "BMW" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.15 + 0.1));
+                            return  (int) (carToRepair.getPrice() * (0.15 + 0.1));
+
                         }
                         case "Volvo", "Ford", "Volkswagen" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.15 + 0.09));
+                            return  (int) (carToRepair.getPrice() * (0.15 + 0.09));
+
                         }
                         case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.15 + 0.08));
+                            return  (int) (carToRepair.getPrice() * (0.15 + 0.08));
+
                         }
                         case "Skoda", "Hyundai", "Nissan" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.15 + 0.07));
+                            return  (int) (carToRepair.getPrice() * (0.15 + 0.07));
+
                         }
                         case "Fiat", "Opel", "Dacia" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.15 + 0.06));
+                            return  (int) (carToRepair.getPrice() * (0.15 + 0.06));
+
                         }
                         case "Peugeot", "Renault", "Citroen" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.15 + 0.05));
+                            return  (int) (carToRepair.getPrice() * (0.15 + 0.05));
+
                         }
                     }
                 }
             }
-            case "lights" -> {
+            case "Lights" -> {
                 if (carToRepair.isBrokenLights()) {
                     switch (carToRepair.getModel()) {
                         case "Mercedes", "Audi", "BMW" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.07 + 0.1));
+                            return  (int) (carToRepair.getPrice() * (0.07 + 0.1));
                         }
                         case "Volvo", "Ford", "Volkswagen" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.07 + 0.09));
+                            return  (int) (carToRepair.getPrice() * (0.07 + 0.09));
                         }
                         case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.07 + 0.08));
+                            return  (int) (carToRepair.getPrice() * (0.07 + 0.08));
                         }
                         case "Skoda", "Hyundai", "Nissan" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.07 + 0.07));
+                            return  (int) (carToRepair.getPrice() * (0.07 + 0.07));
                         }
                         case "Fiat", "Opel", "Dacia" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.07 + 0.06));
+                            return  (int) (carToRepair.getPrice() * (0.07 + 0.06));
                         }
                         case "Peugeot", "Renault", "Citroen" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.07 + 0.05));
+                            return  (int) (carToRepair.getPrice() * (0.07 + 0.05));
                         }
                     }
                 }
             }
-            case "wheels" -> {
+            case "Wheels" -> {
                 if (carToRepair.isBrokenWheels()) {
                     switch (carToRepair.getModel()) {
                         case "Mercedes", "Audi", "BMW" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.1));
+                            return  (int) (carToRepair.getPrice() * (0.05 + 0.1));
                         }
                         case "Volvo", "Ford", "Volkswagen" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.09));
+                            return  (int) (carToRepair.getPrice() * (0.05 + 0.09));
                         }
                         case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.08));
+                            return  (int) (carToRepair.getPrice() * (0.05 + 0.08));
                         }
                         case "Skoda", "Hyundai", "Nissan" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.07));
+                            return  (int) (carToRepair.getPrice() * (0.05 + 0.07));
                         }
                         case "Fiat", "Opel", "Dacia" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.06));
+                            return  (int) (carToRepair.getPrice() * (0.05 + 0.06));
                         }
                         case "Peugeot", "Renault", "Citroen" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.05));
+                            return  (int) (carToRepair.getPrice() * (0.05 + 0.05));
                         }
                     }
                 }
             }
-            case "brakes" -> {
+            case "Brakes" -> {
                 if (carToRepair.isBrokenBrakes()) {
                     switch (carToRepair.getModel()) {
                         case "Mercedes", "Audi", "BMW" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.07));
+                            return  (int) (carToRepair.getPrice() * (0.05 + 0.07));
                         }
                         case "Volvo", "Ford", "Volkswagen" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.06));
+                            return  (int) (carToRepair.getPrice() * (0.05 + 0.06));
                         }
                         case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.05));
+                            return  (int) (carToRepair.getPrice() * (0.05 + 0.05));
                         }
                         case "Skoda", "Hyundai", "Nissan" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.04));
+                            return  (int) (carToRepair.getPrice() * (0.05 + 0.04));
                         }
                         case "Fiat", "Opel", "Dacia" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.03));
+                            return  (int) (carToRepair.getPrice() * (0.05 + 0.03));
                         }
                         case "Peugeot", "Renault", "Citroen" -> {
-                            repairCost = (int) (carToRepair.getPrice() * (0.05 + 0.02));
+                            return  (int) (carToRepair.getPrice() * (0.05 + 0.02));
                         }
                     }
                 }
@@ -1277,8 +1289,6 @@ public class CarComis {
         }
         return repairCost;
     }
-
-
 
 
 }

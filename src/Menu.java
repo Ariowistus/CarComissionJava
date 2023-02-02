@@ -39,17 +39,23 @@ public class Menu {
                         continue;
                     } else {
                         printCars(carComis.getPurchasedCars());
-
                     }
                     System.out.println("Wybierz numer samochodu do przeglądu");
 
-                    int carIndex = scanner.nextInt();
+                    int carIndex;
+                    if (scanner.hasNextInt()) {
+                        carIndex = scanner.nextInt();
+                    } else {
+                        System.out.println("To nie jest liczba");
+                        scanner.next();
+                        continue;
+                    }
+
                     if (carIndex <= 0 || carIndex > carComis.getPurchasedCars().size()) {
                         System.out.println("Nie ma takiego samochodu");
                         continue;
                     }
                     carComis.showBrokenParts(carComis.getPurchasedCars().get(carIndex - 1));
-
                     System.out.println("Wybierz, którą część chcesz naprawić:");
                     String partIndex = scanner.next();
                     switch (partIndex) {
@@ -111,24 +117,61 @@ public class Menu {
                         System.out.println("3 Marian");
                         int mechanicIndex = scanner.nextInt();
                         Car carToRepair = carComis.getPurchasedCars().get(carIndex - 1);
-                        int repairCost = 0;
+
                         switch (mechanicIndex) {
-                            case 1 -> repairCost = carComis.repairCostJanusz(carToRepair, partIndex);
-                            case 2 -> repairCost = carComis.repairCostAdrian(carToRepair, partIndex);
-                            case 3 -> repairCost = carComis.repairCostMarian(carToRepair, partIndex);
+                            case 1 -> {
+                                int repairCost1 = carComis.repairCostJanusz(carToRepair, partIndex);
+                                System.out.println("Cena naprawy: " + repairCost1);
+                                if (carComis.getBudget() < repairCost1) {
+                                    System.out.println("Nie masz wystarczająco pieniędzy");
+                                    continue;
+                                }
+                            }
+                            case 2 -> {
+                                int repairCost2 = carComis.repairCostAdrian(carToRepair, partIndex);
+                                System.out.println("Cena naprawy: " + repairCost2);
+                                if (carComis.getBudget() < repairCost2) {
+                                    System.out.println("Nie masz wystarczająco pieniędzy");
+                                    continue;
+                                }
+                            }
+                            case 3 -> {
+                                int repairCost3 = carComis.repairCostMarian(carToRepair, partIndex);
+
+                                System.out.println("Cena naprawy: " + repairCost3);
+                                if (carComis.getBudget() < repairCost3) {
+                                    System.out.println("Nie masz wystarczająco pieniędzy");
+                                    continue;
+                                }
+                            }
                             default -> System.out.println("Nie ma takiego mechanika");
                         }
-                        if (repairCost > carComis.getBudget()) {
-                            System.out.println("Nie masz wystarczających środków na naprawę.");
-                        } else {
+
+                        System.out.println("Czy chcesz naprawić tą część (t/n)");
+                        String answer2 = scanner.next();
+                        if (answer2.equals("t")) {
                             switch (mechanicIndex) {
-                                case 1 -> carComis.repairCarByMechanicJanusz(carToRepair, partIndex);
-                                case 2 -> carComis.repairCarByMechanicAdrian(carToRepair, partIndex);
-                                case 3 -> carComis.repairCarByMechanicMarian(carToRepair, partIndex);
+                                case 1 -> {
+                                    carComis.repairCarByMechanicJanusz(carToRepair, partIndex);
+                                    System.out.println("Naprawiono");
+                                }
+                                case 2 -> {
+                                    carComis.repairCarByMechanicAdrian(carToRepair, partIndex);
+                                    System.out.println("Naprawiono");
+                                }
+                                case 3 -> {
+                                    carComis.repairCarByMechanicMarian(carToRepair, partIndex);
+                                    System.out.println("Naprawiono");
+                                }
+                                default -> System.out.println("Nie ma takiego mechanika");
                             }
+                        } else {
+                            System.out.println("Nie naprawiono");
+                        }
+
                             System.out.println("Twój budżet: " + carComis.getBudget());
                             System.out.println("Cena samochodu po naprawie: " + carToRepair.getPrice());
-                        }
+
                     }
 
 
