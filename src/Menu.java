@@ -144,7 +144,9 @@ public class Menu {
                                     continue;
                                 }
                             }
-                            default -> System.out.println("Nie ma takiego mechanika");
+                            default -> {System.out.println("Nie ma takiego mechanika");
+                                continue;
+                            }
                         }
 
                         System.out.println("Czy chcesz naprawić tą część (t/n)");
