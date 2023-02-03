@@ -5,6 +5,7 @@ public class CarComis {
 
     private double budget;
     private List<Car> purchasedCars;
+    private List<Client> purchasedClients;
 
 
     public CarComis(Integer budget) {
@@ -14,6 +15,7 @@ public class CarComis {
         this.budget = budget;
         this.budget = budget;
         purchasedCars = new ArrayList<>();
+        purchasedClients = new ArrayList<>();
     }
 
 
@@ -57,6 +59,43 @@ public class CarComis {
         return randomCars;
     } // metoda generująca losowe samochody
 
+    //stwórz metode która generuje liste klinetów zgodnie z poniższym wzorem
+    //losowa wartości kapitału
+    //losowe imie [Jan, Adam, Piotr, Paweł, Jakub, Kamil, Mateusz, Michał, Krzysztof, Wojciech, Tomasz, Bartosz, Maciej, Marcin, Łukasz, Jakub, Kamil, Mateusz, Michał, Krzysztof, Wojciech, Tomasz, Bartosz, Maciej, Marcin, Łukasz]
+    //loswa marka 1 [Audi, BMW, Mercedes, Fiat, Opel, Ford, Toyota, Honda, Hyundai, Kia, Mazda, Nissan, Peugeot, Renault, Skoda, Suzuki, Volkswagen, Volvo, Citroen, Dacia]
+    //losowa marka 2[Audi, BMW, Mercedes, Fiat, Opel, Ford, Toyota, Honda, Hyundai, Kia, Mazda, Nissan, Peugeot, Renault, Skoda, Suzuki, Volkswagen, Volvo, Citroen, Dacia]
+    //losowy acceptDamageEngine
+    //losowy acceptDamageWheels
+    //losowy acceptDamageLights
+    //losowy acceptDamageBrakes
+    //losowy acceptDamageTransmission
+    public List<Client> generateRandomClients() {
+        List<Client> randomClients = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            int random = (int) (Math.random() * 9);
+            int randomCapital = (int) (Math.random() * 100000);
+            String[] names = {"Jan", "Adam", "Piotr", "Pawel", "Jakub", "Kamil", "Mateusz", "Michal", "Krzysztof", "Wojciech", "Tomasz", "Bartosz", "Maciej", "Marcin", "Łukasz", "Jakub", "Kamil", "Mateusz", "Michal", "Krzysztof", "Wojciech", "Tomasz", "Bartosz", "Maciej", "Marcin", "Łukasz"};
+            String randomName = names[(int) (Math.random() * names.length)];
+            String[] models = {"Audi", "BMW", "Mercedes", "Fiat", "Opel", "Ford", "Toyota", "Honda", "Hyundai", "Kia", "Mazda", "Nissan", "Peugeot", "Renault", "Skoda", "Suzuki", "Volkswagen", "Volvo", "Citroen", "Dacia"};
+            String randomModel1 = models[(int) (Math.random() * models.length)];
+            String randomModel2 = models[(int) (Math.random() * models.length)];
+            boolean randomAcceptDamageEngine = (int) (Math.random() * 2) == 1;
+            boolean randomAcceptDamageWheels = (int) (Math.random() * 2) == 1;
+            boolean randomAcceptDamageLights = (int) (Math.random() * 2) == 1;
+            boolean randomAcceptDamageBrakes = (int) (Math.random() * 2) == 1;
+            boolean randomAcceptDamageTransmission = (int) (Math.random() * 2) == 1;
+            switch (random) {
+                case 0, 4, 1, 2, 3, 5, 6, 7, 8, 9 -> {
+                    randomClients.add(new Client(purchasedCars,randomName,randomCapital,randomModel1,randomModel2,randomAcceptDamageEngine,randomAcceptDamageWheels,randomAcceptDamageLights,randomAcceptDamageBrakes,randomAcceptDamageTransmission));
+                    break;
+                }
+            }
+        }
+        return randomClients;
+    } // metoda generująca losowe klientów
+
+
+
 
     public void addPurchasedCar(Car car, List<Car> randomCars) {
         int randomPrice = (int) (Math.random() * 100000);
@@ -98,6 +137,27 @@ public class CarComis {
 
 
     } // metoda dodająca kupiony samochód do listy kupionych samochodów
+
+    public void addPurchasedClient(Client client, List<Client> randomClients) {
+        int random = (int) (Math.random() * 9);
+        int randomCapital = (int) (Math.random() * 100000);
+        String[] names = {"Jan", "Adam", "Piotr", "Pawel", "Jakub", "Kamil", "Mateusz", "Michal", "Krzysztof", "Wojciech", "Tomasz", "Bartosz", "Maciej", "Marcin", "Łukasz", "Jakub", "Kamil", "Mateusz", "Michal", "Krzysztof", "Wojciech", "Tomasz", "Bartosz", "Maciej", "Marcin", "Łukasz"};
+        String randomName = names[(int) (Math.random() * names.length)];
+        String[] models = {"Audi", "BMW", "Mercedes", "Fiat", "Opel", "Ford", "Toyota", "Honda", "Hyundai", "Kia", "Mazda", "Nissan", "Peugeot", "Renault", "Skoda", "Suzuki", "Volkswagen", "Volvo", "Citroen", "Dacia"};
+        String randomModel1 = models[(int) (Math.random() * models.length)];
+        String randomModel2 = models[(int) (Math.random() * models.length)];
+        boolean randomAcceptDamageEngine = (int) (Math.random() * 2) == 1;
+        boolean randomAcceptDamageWheels = (int) (Math.random() * 2) == 1;
+        boolean randomAcceptDamageLights = (int) (Math.random() * 2) == 1;
+        boolean randomAcceptDamageBrakes = (int) (Math.random() * 2) == 1;
+        boolean randomAcceptDamageTransmission = (int) (Math.random() * 2) == 1;
+        purchasedClients.add(client);
+        randomClients.remove(client);
+        randomClients.add(new Client(purchasedCars,randomName,randomCapital,randomModel1,randomModel2,randomAcceptDamageEngine,randomAcceptDamageWheels,randomAcceptDamageLights,randomAcceptDamageBrakes,randomAcceptDamageTransmission));
+
+
+
+    }
 
 
     public Integer getBudget() {
@@ -1290,5 +1350,16 @@ public class CarComis {
         return repairCost;
     }
 
+    public List<Client> getPurchasedClients() {
+        return purchasedClients;
+    }
 
+    public void sellCarToClient(Car car, Client client) {
+        if (car.isBrokenEngine() || car.isBrokenTransmission() || car.isBrokenLights() || car.isBrokenWheels() || car.isBrokenBrakes()) {
+            System.out.println("Car is not ready to be sold");
+        } else {
+            purchasedClients.add(client);
+            System.out.println("Car sold to " + client.getName());
+        }
+    }
 }

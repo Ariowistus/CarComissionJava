@@ -3,7 +3,8 @@ import java.util.Arrays;
 public class Car {
 
 
-    private String model;
+    private String marka;
+
     private String color;
     private int price;
     private double mileage;
@@ -15,7 +16,7 @@ public class Car {
     boolean brokenTransmission;
 
     public Car(String model, String color, int price, double mileage, String segment, boolean brokenengine, boolean brokenWheels, boolean brokenLights, boolean brokenBrakes, boolean brokenTransmission) {
-        this.model = model;
+        this.marka = model;
         this.color = color;
         this.price = price;
         this.mileage = mileage;
@@ -30,7 +31,7 @@ public class Car {
     @Override
     public String toString() {
         return "Car{" +
-                "model='" + model + '\'' +
+                "marka='" + marka + '\'' +
                 ", color='" + color + '\'' +
                 ", price=" + price +
                 ", mileage=" + mileage +
@@ -39,11 +40,11 @@ public class Car {
     }
 
     public String getModel() {
-        return model;
+        return marka;
     }
 
     public void setModel(String model) {
-        this.model = model;
+        this.marka = model;
     }
 
     public String getColor() {

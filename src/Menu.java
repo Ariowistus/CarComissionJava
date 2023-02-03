@@ -18,6 +18,8 @@ public class Menu {
             System.out.println("3. Przegląd techniczny");
             System.out.println("4. Wyjdz");
             System.out.println("5 Sprzedaj samochod");
+            System.out.println("6 Pokaz mi listę klientów");
+            System.out.println("7 Sprzedaj samochod klientowi");
             String option = scanner.next();
             switch (option) {
 
@@ -171,8 +173,8 @@ public class Menu {
                             System.out.println("Nie naprawiono");
                         }
 
-                            System.out.println("Twój budżet: " + carComis.getBudget());
-                            System.out.println("Cena samochodu po naprawie: " + carToRepair.getPrice());
+                        System.out.println("Twój budżet: " + carComis.getBudget());
+                        System.out.println("Cena samochodu po naprawie: " + carToRepair.getPrice());
 
                     }
 
@@ -187,6 +189,7 @@ public class Menu {
                     System.out.println("Kupione samochody");
                     printCars(carComis.getPurchasedCars());
                     System.out.println("który samochód chcesz sprzedać?");
+
 
                     if(scanner.hasNextInt()) {
                         int carIndex1 = scanner.nextInt();
@@ -206,6 +209,46 @@ public class Menu {
 
 
                 }
+                case "6" ->{
+                    purchaseClient(scanner, carComis,carComis.generateRandomClients());
+
+                    System.out.println("moja lista klientów");
+                    printClients(carComis.getPurchasedClients());
+
+                }
+                case "7" -> {
+                    purchaseClient(scanner, carComis, carComis.generateRandomClients());
+                    System.out.println("Wybierz klienta któremu chcesz sprzedać samochód");
+                    printClients(carComis.getPurchasedClients());
+                    if(scanner.hasNextInt()) {
+                        int clientIndex = scanner.nextInt();
+                        if (clientIndex <= 0 || clientIndex > carComis.getPurchasedClients().size()) {
+                            System.out.println("Nie ma takiego klienta");
+                            continue;
+                        }
+                        System.out.println("Wybierz samochód który chcesz sprzedać");
+                        printCars(carComis.getPurchasedCars());
+                        if(scanner.hasNextInt()) {
+                            int carIndex = scanner.nextInt();
+                            if (carIndex <= 0 || carIndex > carComis.getPurchasedCars().size()) {
+                                System.out.println("Nie ma takiego samochodu");
+                                continue;
+                            }
+                            carComis.sellCarToClient(carComis.getPurchasedCars().get(carIndex - 1), carComis.getPurchasedClients().get(clientIndex - 1));
+                            System.out.println("Samochód został sprzedany");
+                            System.out.println("Twój budżet to: " + carComis.getBudget());
+                            break;
+                        } else {
+                            System.out.println("Wprowadzono nieprawidłowe dane, proszę wprowadzić liczbę");
+                            scanner.next();
+                            continue;
+                        }
+                    } else {
+                        System.out.println("Wprowadzono nieprawidłowe dane, proszę wprowadzić liczbę");
+                        scanner.next();
+                        continue;
+                    }
+                }
 
                 default -> System.out.println("Nie ma takiej opcji");
 
@@ -213,6 +256,18 @@ public class Menu {
 
         }
     }
+    public void printClients(List<Client> randomClients) {
+        for (int i = 0; i < randomClients.size(); i++) {
+            System.out.println((i + 1) + ". " + randomClients.get(i));
+        }
+    }
+
+    public void printCars(List<Car> randomCars) {
+        for (int i = 0; i < randomCars.size(); i++) {
+            System.out.println((i + 1) + ". " + randomCars.get(i));
+
+        }
+    }//wypisz samochody
 
     private void purchaseCar(Scanner scanner, CarComis carComis, List<Car> randomCars) {
         System.out.println("Wybierz samochód do zakupu (podaj numer samochodu):");
@@ -233,10 +288,22 @@ public class Menu {
 
     } //kup samochod
 
-    public void printCars(List<Car> randomCars) {
-        for (int i = 0; i < randomCars.size(); i++) {
-            System.out.println((i + 1) + ". " + randomCars.get(i));
-
+    private void purchaseClient(Scanner scanner, CarComis carComis, List<Client> randomClients) {
+        System.out.println("Wybierz klienta do zakupu (podaj numer klienta):");
+        System.out.println("albo wciśnij dowolną literę, aby wrócić do menu");
+        printClients(randomClients);
+        if (scanner.hasNextInt()) {
+            int clientIndex = scanner.nextInt();
+            if (clientIndex > 0 && clientIndex <= randomClients.size()) {
+                Client clientToPurchase = randomClients.get(clientIndex - 1);
+                carComis.addPurchasedClient(clientToPurchase, randomClients);
+            } else {
+                System.out.println("Nie ma takiego klienta");
+            }
+        } else {
+            System.out.println("Podaj liczbę");
+            scanner.next();
         }
-    }//wypisz samochody
+
+    } //kup klienta
 }
