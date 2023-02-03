@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Car {
 
@@ -125,5 +126,42 @@ public class Car {
 
     public void setBrokenEngine(boolean b) {
         this.brokenengine = b;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Car car = (Car) o;
+
+        if (price != car.price) return false;
+        if (Double.compare(car.mileage, mileage) != 0) return false;
+        if (brokenengine != car.brokenengine) return false;
+        if (brokenWheels != car.brokenWheels) return false;
+        if (brokenLights != car.brokenLights) return false;
+        if (brokenBrakes != car.brokenBrakes) return false;
+        if (brokenTransmission != car.brokenTransmission) return false;
+        if (!Objects.equals(marka, car.marka)) return false;
+        if (!Objects.equals(color, car.color)) return false;
+        return Objects.equals(segment, car.segment);
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = marka != null ? marka.hashCode() : 0;
+        result = 31 * result + (color != null ? color.hashCode() : 0);
+        result = 31 * result + price;
+        temp = Double.doubleToLongBits(mileage);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + (segment != null ? segment.hashCode() : 0);
+        result = 31 * result + (brokenengine ? 1 : 0);
+        result = 31 * result + (brokenWheels ? 1 : 0);
+        result = 31 * result + (brokenLights ? 1 : 0);
+        result = 31 * result + (brokenBrakes ? 1 : 0);
+        result = 31 * result + (brokenTransmission ? 1 : 0);
+        return result;
     }
 }

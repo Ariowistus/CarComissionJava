@@ -73,7 +73,7 @@ public class CarComis {
         List<Client> randomClients = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             int random = (int) (Math.random() * 9);
-            int randomCapital = (int) (Math.random() * 100000);
+            int randomCapital = (int) (Math.random() * 10000000);
             String[] names = {"Jan", "Adam", "Piotr", "Pawel", "Jakub", "Kamil", "Mateusz", "Michal", "Krzysztof", "Wojciech", "Tomasz", "Bartosz", "Maciej", "Marcin", "Łukasz", "Jakub", "Kamil", "Mateusz", "Michal", "Krzysztof", "Wojciech", "Tomasz", "Bartosz", "Maciej", "Marcin", "Łukasz"};
             String randomName = names[(int) (Math.random() * names.length)];
             String[] models = {"Audi", "BMW", "Mercedes", "Fiat", "Opel", "Ford", "Toyota", "Honda", "Hyundai", "Kia", "Mazda", "Nissan", "Peugeot", "Renault", "Skoda", "Suzuki", "Volkswagen", "Volvo", "Citroen", "Dacia"};
@@ -86,15 +86,13 @@ public class CarComis {
             boolean randomAcceptDamageTransmission = (int) (Math.random() * 2) == 1;
             switch (random) {
                 case 0, 4, 1, 2, 3, 5, 6, 7, 8, 9 -> {
-                    randomClients.add(new Client(purchasedCars,randomName,randomCapital,randomModel1,randomModel2,randomAcceptDamageEngine,randomAcceptDamageWheels,randomAcceptDamageLights,randomAcceptDamageBrakes,randomAcceptDamageTransmission));
+                    randomClients.add(new Client(purchasedCars, randomName, randomCapital, randomModel1, randomModel2, randomAcceptDamageEngine, randomAcceptDamageWheels, randomAcceptDamageLights, randomAcceptDamageBrakes, randomAcceptDamageTransmission));
                     break;
                 }
             }
         }
         return randomClients;
     } // metoda generująca losowe klientów
-
-
 
 
     public void addPurchasedCar(Car car, List<Car> randomCars) {
@@ -140,7 +138,7 @@ public class CarComis {
 
     public void addPurchasedClient(Client client, List<Client> randomClients) {
         int random = (int) (Math.random() * 9);
-        int randomCapital = (int) (Math.random() * 100000);
+        int randomCapital = (int) (Math.random() * 10000000);
         String[] names = {"Jan", "Adam", "Piotr", "Pawel", "Jakub", "Kamil", "Mateusz", "Michal", "Krzysztof", "Wojciech", "Tomasz", "Bartosz", "Maciej", "Marcin", "Łukasz", "Jakub", "Kamil", "Mateusz", "Michal", "Krzysztof", "Wojciech", "Tomasz", "Bartosz", "Maciej", "Marcin", "Łukasz"};
         String randomName = names[(int) (Math.random() * names.length)];
         String[] models = {"Audi", "BMW", "Mercedes", "Fiat", "Opel", "Ford", "Toyota", "Honda", "Hyundai", "Kia", "Mazda", "Nissan", "Peugeot", "Renault", "Skoda", "Suzuki", "Volkswagen", "Volvo", "Citroen", "Dacia"};
@@ -153,8 +151,7 @@ public class CarComis {
         boolean randomAcceptDamageTransmission = (int) (Math.random() * 2) == 1;
         purchasedClients.add(client);
         randomClients.remove(client);
-        randomClients.add(new Client(purchasedCars,randomName,randomCapital,randomModel1,randomModel2,randomAcceptDamageEngine,randomAcceptDamageWheels,randomAcceptDamageLights,randomAcceptDamageBrakes,randomAcceptDamageTransmission));
-
+        randomClients.add(new Client(purchasedCars, randomName, randomCapital, randomModel1, randomModel2, randomAcceptDamageEngine, randomAcceptDamageWheels, randomAcceptDamageLights, randomAcceptDamageBrakes, randomAcceptDamageTransmission));
 
 
     }
@@ -1162,7 +1159,7 @@ public class CarComis {
                 if (carToRepair.isBrokenLights()) {
                     switch (carToRepair.getModel()) {
                         case "Mercedes", "Audi", "BMW" -> {
-                            return (int) (carToRepair.getPrice() * (0.05+ 0.1));
+                            return (int) (carToRepair.getPrice() * (0.05 + 0.1));
                         }
                         case "Volvo", "Ford", "Volkswagen" -> {
                             return (int) (carToRepair.getPrice() * (0.05 + 0.09));
@@ -1218,27 +1215,27 @@ public class CarComis {
                 if (carToRepair.isBrokenEngine()) {
                     switch (carToRepair.getModel()) {
                         case "Mercedes", "Audi", "BMW" -> {
-                            return  (int) (carToRepair.getPrice() * (0.15 + 0.11));
+                            return (int) (carToRepair.getPrice() * (0.15 + 0.11));
 
                         }
                         case "Volvo", "Ford", "Volkswagen" -> {
-                            return  (int) (carToRepair.getPrice() * (0.15 + 0.09));
+                            return (int) (carToRepair.getPrice() * (0.15 + 0.09));
 
                         }
                         case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
-                            return  (int) (carToRepair.getPrice() * (0.15 + 0.08));
+                            return (int) (carToRepair.getPrice() * (0.15 + 0.08));
 
                         }
                         case "Skoda", "Hyundai", "Nissan" -> {
-                            return  (int) (carToRepair.getPrice() * (0.15 + 0.07));
+                            return (int) (carToRepair.getPrice() * (0.15 + 0.07));
 
                         }
                         case "Fiat", "Opel", "Dacia" -> {
-                            return  (int) (carToRepair.getPrice() * (0.15 + 0.06));
+                            return (int) (carToRepair.getPrice() * (0.15 + 0.06));
 
                         }
                         case "Peugeot", "Renault", "Citroen" -> {
-                            return  (int) (carToRepair.getPrice() * (0.15 + 0.05));
+                            return (int) (carToRepair.getPrice() * (0.15 + 0.05));
 
                         }
                     }
@@ -1248,27 +1245,27 @@ public class CarComis {
                 if (carToRepair.isBrokenTransmission()) {
                     switch (carToRepair.getModel()) {
                         case "Mercedes", "Audi", "BMW" -> {
-                            return  (int) (carToRepair.getPrice() * (0.15 + 0.1));
+                            return (int) (carToRepair.getPrice() * (0.15 + 0.1));
 
                         }
                         case "Volvo", "Ford", "Volkswagen" -> {
-                            return  (int) (carToRepair.getPrice() * (0.15 + 0.09));
+                            return (int) (carToRepair.getPrice() * (0.15 + 0.09));
 
                         }
                         case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
-                            return  (int) (carToRepair.getPrice() * (0.15 + 0.08));
+                            return (int) (carToRepair.getPrice() * (0.15 + 0.08));
 
                         }
                         case "Skoda", "Hyundai", "Nissan" -> {
-                            return  (int) (carToRepair.getPrice() * (0.15 + 0.07));
+                            return (int) (carToRepair.getPrice() * (0.15 + 0.07));
 
                         }
                         case "Fiat", "Opel", "Dacia" -> {
-                            return  (int) (carToRepair.getPrice() * (0.15 + 0.06));
+                            return (int) (carToRepair.getPrice() * (0.15 + 0.06));
 
                         }
                         case "Peugeot", "Renault", "Citroen" -> {
-                            return  (int) (carToRepair.getPrice() * (0.15 + 0.05));
+                            return (int) (carToRepair.getPrice() * (0.15 + 0.05));
 
                         }
                     }
@@ -1278,22 +1275,22 @@ public class CarComis {
                 if (carToRepair.isBrokenLights()) {
                     switch (carToRepair.getModel()) {
                         case "Mercedes", "Audi", "BMW" -> {
-                            return  (int) (carToRepair.getPrice() * (0.07 + 0.1));
+                            return (int) (carToRepair.getPrice() * (0.07 + 0.1));
                         }
                         case "Volvo", "Ford", "Volkswagen" -> {
-                            return  (int) (carToRepair.getPrice() * (0.07 + 0.09));
+                            return (int) (carToRepair.getPrice() * (0.07 + 0.09));
                         }
                         case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
-                            return  (int) (carToRepair.getPrice() * (0.07 + 0.08));
+                            return (int) (carToRepair.getPrice() * (0.07 + 0.08));
                         }
                         case "Skoda", "Hyundai", "Nissan" -> {
-                            return  (int) (carToRepair.getPrice() * (0.07 + 0.07));
+                            return (int) (carToRepair.getPrice() * (0.07 + 0.07));
                         }
                         case "Fiat", "Opel", "Dacia" -> {
-                            return  (int) (carToRepair.getPrice() * (0.07 + 0.06));
+                            return (int) (carToRepair.getPrice() * (0.07 + 0.06));
                         }
                         case "Peugeot", "Renault", "Citroen" -> {
-                            return  (int) (carToRepair.getPrice() * (0.07 + 0.05));
+                            return (int) (carToRepair.getPrice() * (0.07 + 0.05));
                         }
                     }
                 }
@@ -1302,22 +1299,22 @@ public class CarComis {
                 if (carToRepair.isBrokenWheels()) {
                     switch (carToRepair.getModel()) {
                         case "Mercedes", "Audi", "BMW" -> {
-                            return  (int) (carToRepair.getPrice() * (0.05 + 0.1));
+                            return (int) (carToRepair.getPrice() * (0.05 + 0.1));
                         }
                         case "Volvo", "Ford", "Volkswagen" -> {
-                            return  (int) (carToRepair.getPrice() * (0.05 + 0.09));
+                            return (int) (carToRepair.getPrice() * (0.05 + 0.09));
                         }
                         case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
-                            return  (int) (carToRepair.getPrice() * (0.05 + 0.08));
+                            return (int) (carToRepair.getPrice() * (0.05 + 0.08));
                         }
                         case "Skoda", "Hyundai", "Nissan" -> {
-                            return  (int) (carToRepair.getPrice() * (0.05 + 0.07));
+                            return (int) (carToRepair.getPrice() * (0.05 + 0.07));
                         }
                         case "Fiat", "Opel", "Dacia" -> {
-                            return  (int) (carToRepair.getPrice() * (0.05 + 0.06));
+                            return (int) (carToRepair.getPrice() * (0.05 + 0.06));
                         }
                         case "Peugeot", "Renault", "Citroen" -> {
-                            return  (int) (carToRepair.getPrice() * (0.05 + 0.05));
+                            return (int) (carToRepair.getPrice() * (0.05 + 0.05));
                         }
                     }
                 }
@@ -1326,22 +1323,22 @@ public class CarComis {
                 if (carToRepair.isBrokenBrakes()) {
                     switch (carToRepair.getModel()) {
                         case "Mercedes", "Audi", "BMW" -> {
-                            return  (int) (carToRepair.getPrice() * (0.05 + 0.07));
+                            return (int) (carToRepair.getPrice() * (0.05 + 0.07));
                         }
                         case "Volvo", "Ford", "Volkswagen" -> {
-                            return  (int) (carToRepair.getPrice() * (0.05 + 0.06));
+                            return (int) (carToRepair.getPrice() * (0.05 + 0.06));
                         }
                         case "Toyota", "Honda", "Kia", "Mazda", "Suzuki" -> {
-                            return  (int) (carToRepair.getPrice() * (0.05 + 0.05));
+                            return (int) (carToRepair.getPrice() * (0.05 + 0.05));
                         }
                         case "Skoda", "Hyundai", "Nissan" -> {
-                            return  (int) (carToRepair.getPrice() * (0.05 + 0.04));
+                            return (int) (carToRepair.getPrice() * (0.05 + 0.04));
                         }
                         case "Fiat", "Opel", "Dacia" -> {
-                            return  (int) (carToRepair.getPrice() * (0.05 + 0.03));
+                            return (int) (carToRepair.getPrice() * (0.05 + 0.03));
                         }
                         case "Peugeot", "Renault", "Citroen" -> {
-                            return  (int) (carToRepair.getPrice() * (0.05 + 0.02));
+                            return (int) (carToRepair.getPrice() * (0.05 + 0.02));
                         }
                     }
                 }
@@ -1357,9 +1354,20 @@ public class CarComis {
     public void sellCarToClient(Car car, Client client) {
         if (car.isBrokenEngine() || car.isBrokenTransmission() || car.isBrokenLights() || car.isBrokenWheels() || car.isBrokenBrakes()) {
             System.out.println("Car is not ready to be sold");
+        } else if (client.getMoney() < car.getPrice()) {
+            System.out.println("Client doesn't have enough money to buy this car");
+        } else if (!(car.getModel().equals(client.getBrand1()))) {
+            System.out.println("Client is not interested in this car");
+        } else if (!(car.getModel().equals(client.getBrand2()))) {
+            System.out.println("Client is not interested in this car");
+
         } else {
+            client.setMoney(client.getMoney() - car.getPrice());
             purchasedClients.add(client);
-            System.out.println("Car sold to " + client.getName());
+            System.out.println("Car sold to client");
         }
+
     }
 }
+
+

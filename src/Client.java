@@ -1,10 +1,10 @@
-import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class Client {
     public List<Car> purchasedCars ;
     private String name;
-    private double cash;
+    private double money;
     private String brand1;
     private String brand2;
     private boolean acceptDamageEngine;
@@ -16,7 +16,7 @@ public class Client {
     public Client(List<Car> purchasedCars, String name, double cash, String brand1, String brand2, boolean acceptDamageEngine, boolean acceptDamageWheels, boolean acceptDamageLights, boolean acceptDamageBrakes, boolean acceptDamageTransmission) {
         this.purchasedCars = purchasedCars;
         this.name = name;
-        this.cash = cash;
+        this.money = cash;
         this.brand1 = brand1;
         this.brand2 = brand2;
         this.acceptDamageEngine = acceptDamageEngine;
@@ -42,12 +42,10 @@ public class Client {
         this.name = name;
     }
 
-    public double getCash() {
-        return cash;
-    }
 
-    public void setCash(double cash) {
-        this.cash = cash;
+
+    public void setMoney(double money) {
+        this.money = money;
     }
 
     public String getBrand1() {
@@ -109,7 +107,7 @@ public class Client {
     @Override
     public String toString() {
         return "Client{" + ", name='" + name + '\'' +
-                ", cash=" + cash +
+                ", cash=" + money +
                 ", brand1='" + brand1 + '\'' +
                 ", brand2='" + brand2 + '\'' +
                 ", acceptDamageEngine=" + acceptDamageEngine +
@@ -118,5 +116,47 @@ public class Client {
                 ", acceptDamageBrakes=" + acceptDamageBrakes +
                 ", acceptDamageTransmission=" + acceptDamageTransmission +
                 '}';
+    }
+
+    public double getMoney() { //
+        return money ;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Client client = (Client) o;
+
+        if (Double.compare(client.money, money) != 0) return false;
+        if (acceptDamageEngine != client.acceptDamageEngine) return false;
+        if (acceptDamageWheels != client.acceptDamageWheels) return false;
+        if (acceptDamageLights != client.acceptDamageLights) return false;
+        if (acceptDamageBrakes != client.acceptDamageBrakes) return false;
+        if (acceptDamageTransmission != client.acceptDamageTransmission) return false;
+        if (!Objects.equals(purchasedCars, client.purchasedCars))
+            return false;
+        if (!Objects.equals(name, client.name)) return false;
+        if (!Objects.equals(brand1, client.brand1)) return false;
+        return Objects.equals(brand2, client.brand2);
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = purchasedCars != null ? purchasedCars.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        temp = Double.doubleToLongBits(money);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + (brand1 != null ? brand1.hashCode() : 0);
+        result = 31 * result + (brand2 != null ? brand2.hashCode() : 0);
+        result = 31 * result + (acceptDamageEngine ? 1 : 0);
+        result = 31 * result + (acceptDamageWheels ? 1 : 0);
+        result = 31 * result + (acceptDamageLights ? 1 : 0);
+        result = 31 * result + (acceptDamageBrakes ? 1 : 0);
+        result = 31 * result + (acceptDamageTransmission ? 1 : 0);
+        return result;
     }
 }

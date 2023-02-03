@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Menu {
 
     public void menu() {
-        CarComis carComis = new CarComis(120000);
+        CarComis carComis = new CarComis(2000000);
         Scanner scanner = new Scanner(System.in);
 
         List<Car> randomCars = carComis.generateRandomCars();
@@ -235,7 +235,7 @@ public class Menu {
                                 continue;
                             }
                             carComis.sellCarToClient(carComis.getPurchasedCars().get(carIndex - 1), carComis.getPurchasedClients().get(clientIndex - 1));
-                            System.out.println("Samochód został sprzedany");
+
                             System.out.println("Twój budżet to: " + carComis.getBudget());
                             break;
                         } else {
