@@ -111,15 +111,15 @@ public class Menu {
 
                     String answer = scanner.next();
                     if (answer.equals("t")) {
-                        System.out.println("Jakiego mechanika chcesz użyć?");
+                        System.out.println("Jakiego mechanika chcesz wybrać?(podaj numer)");
                         System.out.println("1 Janusz");
                         System.out.println("2 Adrian");
                         System.out.println("3 Marian");
-                        int mechanicIndex = scanner.nextInt();
+                        String mechanicIndex = scanner.next();
                         Car carToRepair = carComis.getPurchasedCars().get(carIndex - 1);
 
                         switch (mechanicIndex) {
-                            case 1 -> {
+                            case "1" -> {
                                 int repairCost1 = carComis.repairCostJanusz(carToRepair, partIndex);
                                 System.out.println("Cena naprawy: " + repairCost1);
                                 if (carComis.getBudget() < repairCost1) {
@@ -127,7 +127,7 @@ public class Menu {
                                     continue;
                                 }
                             }
-                            case 2 -> {
+                            case "2" -> {
                                 int repairCost2 = carComis.repairCostAdrian(carToRepair, partIndex);
                                 System.out.println("Cena naprawy: " + repairCost2);
                                 if (carComis.getBudget() < repairCost2) {
@@ -135,7 +135,7 @@ public class Menu {
                                     continue;
                                 }
                             }
-                            case 3 -> {
+                            case "3" -> {
                                 int repairCost3 = carComis.repairCostMarian(carToRepair, partIndex);
 
                                 System.out.println("Cena naprawy: " + repairCost3);
@@ -153,15 +153,15 @@ public class Menu {
                         String answer2 = scanner.next();
                         if (answer2.equals("t")) {
                             switch (mechanicIndex) {
-                                case 1 -> {
+                                case "1" -> {
                                     carComis.repairCarByMechanicJanusz(carToRepair, partIndex);
                                     System.out.println("Naprawiono");
                                 }
-                                case 2 -> {
+                                case "2" -> {
                                     carComis.repairCarByMechanicAdrian(carToRepair, partIndex);
                                     System.out.println("Naprawiono");
                                 }
-                                case 3 -> {
+                                case "3" -> {
                                     carComis.repairCarByMechanicMarian(carToRepair, partIndex);
                                     System.out.println("Naprawiono");
                                 }
