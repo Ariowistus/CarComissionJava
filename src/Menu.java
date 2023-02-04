@@ -10,8 +10,15 @@ public class Menu {
         List<Car> randomCars = carComis.generateRandomCars();
 
         boolean isRunning = true;
+        System.out.println("Witaj w naszej komisie samochodowwym");
+        System.out.println("Zasady");
+        System.out.println("W komisie kupujemy samochody z rynku najcześciej uszkodzone i sprzedajemy je klientom w pełni naprawione");
+
+
+
 
         while (isRunning) {
+
             System.out.println("Wybierz opcje: ");
             System.out.println("1. Kup samochod");
             System.out.println("2 Twój budzet");
@@ -186,7 +193,7 @@ public class Menu {
                 }
                 case "5" -> {
                     purchaseClient(scanner, carComis, carComis.generateRandomClients());
-                    System.out.println("Wybierz klienta któremu chcesz sprzedać samochód");
+                    System.out.println("Wybierz klienta któremu chcesz sprzedać samochód albo wciśnij 0 aby wyjść");
                     printClients(carComis.getPurchasedClients());
                     if(scanner.hasNextInt()) {
                         int clientIndex = scanner.nextInt();
@@ -239,7 +246,7 @@ public class Menu {
 
     private void purchaseCar(Scanner scanner, CarComis carComis, List<Car> randomCars) {
         System.out.println("Wybierz samochód do zakupu (podaj numer samochodu):");
-        System.out.println("albo wciśnij dowolną literę, aby wrócić do menu");
+        System.out.println("albo wciśnij dowolną literę, aby pominąć ten krok");
         printCars(randomCars);
         if (scanner.hasNextInt()) {
             int carIndex = scanner.nextInt();
