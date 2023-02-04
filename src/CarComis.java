@@ -189,16 +189,6 @@ public class CarComis {
     }// metoda pokazująca uszkodzone części samochodu
 
 
-    public void sellCar(Car car) {
-        double wash = 200;
-        double tax = 0.02;
-        budget = budget + (car.getPrice()) - ((car.getPrice() * tax)) - (wash);
-        this.purchasedCars.remove(car);
-        System.out.println("Podatek wyniósł: " + (car.getPrice() * tax));
-        System.out.println("Myjnia kosztowała: " + wash);
-        System.out.println("Pozostało Ci: " + budget + " zł");
-    }// metoda sprzedająca samochód
-
 
     public void repairCarByMechanicMarian(Car car, String partToRepair) {
         if (partToRepair.equals("Engine")) {
@@ -1351,20 +1341,26 @@ public class CarComis {
         return purchasedClients;
     }
 
+    public void sellCar(Car car) {
+        double wash = 200;
+        double tax = 0.02;
+        budget = budget + (car.getPrice()) - ((car.getPrice() * tax)) - (wash);
+        this.purchasedCars.remove(car);
+        System.out.println("Podatek wyniósł: " + (car.getPrice() * tax));
+        System.out.println("Myjnia kosztowała: " + wash);
+        System.out.println("Pozostało Ci: " + budget + " zł");
+    }// metoda sprzedająca samochód
+
     public void sellCarToClient(Car car, Client client) {
         if (car.isBrokenEngine() || car.isBrokenTransmission() || car.isBrokenLights() || car.isBrokenWheels() || car.isBrokenBrakes()) {
-            System.out.println("Car is not ready to be sold");
+            System.out.println("Klient nie kupi samochodu ponieważ jest on uszkodzony");
         } else if (client.getMoney() < car.getPrice()) {
-            System.out.println("Client doesn't have enough money to buy this car");
-        } else if (!(car.getModel().equals(client.getBrand1()))) {
-            System.out.println("Client is not interested in this car");
-        } else if (!(car.getModel().equals(client.getBrand2()))) {
-            System.out.println("Client is not interested in this car");
-
+            System.out.println("Klient nie kupi samochodu ponieważ nie ma wystarczająco pieniędzy");
         } else {
-            client.setMoney(client.getMoney() - car.getPrice());
             purchasedClients.add(client);
-            System.out.println("Car sold to client");
+            sellCar(car);
+            System.out.println("Klient kupił samochód");
+
         }
 
     }
