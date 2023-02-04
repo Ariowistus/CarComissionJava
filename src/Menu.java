@@ -17,9 +17,8 @@ public class Menu {
             System.out.println("2 Twój budzet");
             System.out.println("3. Przegląd techniczny");
             System.out.println("4. Wyjdz");
-            System.out.println("5 Sprzedaj samochod");
-            System.out.println("6 Pokaz mi listę klientów");
-            System.out.println("7 Sprzedaj samochod klientowi");
+            System.out.println("5 Sprzedaj samochod klientowi");
+
             String option = scanner.next();
             switch (option) {
 
@@ -186,37 +185,6 @@ public class Menu {
                     break;
                 }
                 case "5" -> {
-                    System.out.println("Kupione samochody");
-                    printCars(carComis.getPurchasedCars());
-                    System.out.println("który samochód chcesz sprzedać?");
-
-
-                    if(scanner.hasNextInt()) {
-                        int carIndex1 = scanner.nextInt();
-                        if (carIndex1 <= 0 || carIndex1 > carComis.getPurchasedCars().size()) {
-                            System.out.println("Nie ma takiego samochodu");
-                            continue;
-                        }
-                        carComis.sellCar(carComis.getPurchasedCars().get(carIndex1 - 1));
-                        System.out.println("Samochód został sprzedany");
-                        System.out.println("Twój budżet to: " + carComis.getBudget());
-                        break;
-                    } else {
-                        System.out.println("Wprowadzono nieprawidłowe dane, proszę wprowadzić liczbę");
-                        scanner.next();
-                        continue;
-                    }
-
-
-                }
-                case "6" ->{
-                    purchaseClient(scanner, carComis,carComis.generateRandomClients());
-
-                    System.out.println("moja lista klientów");
-                    printClients(carComis.getPurchasedClients());
-
-                }
-                case "7" -> {
                     purchaseClient(scanner, carComis, carComis.generateRandomClients());
                     System.out.println("Wybierz klienta któremu chcesz sprzedać samochód");
                     printClients(carComis.getPurchasedClients());

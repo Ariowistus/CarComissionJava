@@ -107,15 +107,8 @@ public class Client {
     @Override
     public String toString() {
         return "Client{" + ", name='" + name + '\'' +
-                ", cash=" + money +
-                ", brand1='" + brand1 + '\'' +
-                ", brand2='" + brand2 + '\'' +
-                ", acceptDamageEngine=" + acceptDamageEngine +
-                ", acceptDamageWheels=" + acceptDamageWheels +
-                ", acceptDamageLights=" + acceptDamageLights +
-                ", acceptDamageBrakes=" + acceptDamageBrakes +
-                ", acceptDamageTransmission=" + acceptDamageTransmission +
-                '}';
+                ", cash=" + money ;
+
     }
 
     public double getMoney() { //
